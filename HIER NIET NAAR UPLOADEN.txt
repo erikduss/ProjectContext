@@ -1,0 +1,5 @@
+Hier niet direct naar uploaden. Upload naar een branch zodat ik het eerst kan checken. 
+
+De master branch is een volledig werkende versie. Zie het als een "Live" versie van een game. Dus alleen for hotfixes enz.
+
+Als iemand anders als in een branch aan het werk is, maak een nieuwe branch aan. -> repository -> branch
