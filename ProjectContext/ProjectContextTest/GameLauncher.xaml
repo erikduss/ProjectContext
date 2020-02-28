@@ -1,0 +1,17 @@
+﻿<Window x:Class="ProjectContextTest.GameLauncher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:WinForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectContextTest"
+        mc:Ignorable="d"
+        Title="GameLauncher" Height="1920" Width="1080" WindowState="Maximized" WindowStyle="None">
+    <Grid>
+        <WindowsFormsHost Height="1920" Width="1080">
+            <WinForms:Panel x:Name="canvasPanel" Height="1920" Width="1080"></WinForms:Panel>
+        </WindowsFormsHost>
+        <Label x:Name="unityHWNDLabel" Content="Label" HorizontalAlignment="Left" Height="0" Margin="392,-1,0,0" VerticalAlignment="Top" Width="0" Visibility="Hidden"/>
+        <!--<Canvas x:Name="canvasPanel" HorizontalAlignment="Left" Height="420" Margin="0,0,0,0" VerticalAlignment="Top" Width="400"/>-->
+    </Grid>
+</Window>
