@@ -502,6 +502,8 @@ GameObject:
   - component: {fileID: 7217283893554710386}
   - component: {fileID: 4629282507193493359}
   - component: {fileID: 1189340667029848436}
+  - component: {fileID: 5480095204956013933}
+  - component: {fileID: 8939625716105038716}
   m_Layer: 0
   m_Name: Thunder_Bolt
   m_TagString: Untagged
@@ -595,7 +597,51 @@ MonoBehaviour:
   descriptionText: {fileID: 7908311411411279959}
   artworkImage: {fileID: 7153722583404324756}
   manaText: {fileID: 216106469871957987}
-  textSize: 0.8
+  textSize: 0.7
+--- !u!61 &5480095204956013933
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7862290952207580221}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.22, y: 20}
+    newSize: {x: 14.22, y: 20}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.22, y: 20}
+  m_EdgeRadius: 0
+--- !u!114 &8939625716105038716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7862290952207580221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d734b25ad2d3c41b6796020bc54c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardBackground: {fileID: 4629282507193493359}
+  cardImage: {fileID: 7153722583404324756}
+  cardFrame: {fileID: 6407801015723938853}
+  cardName: {fileID: 4738946433908971422}
+  cardDescription: {fileID: 5244717889017420639}
+  cardMana: {fileID: 7443022841176565219}
 --- !u!1 &9069044564644523597
 GameObject:
   m_ObjectHideFlags: 0

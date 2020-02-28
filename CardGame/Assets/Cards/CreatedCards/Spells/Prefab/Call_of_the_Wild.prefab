@@ -283,9 +283,11 @@ GameObject:
   - component: {fileID: 3659710505131453374}
   - component: {fileID: 1648200708948265891}
   - component: {fileID: 5071182025787420088}
+  - component: {fileID: 3648637304729175010}
+  - component: {fileID: 1011924262257034113}
   m_Layer: 0
   m_Name: Call_of_the_Wild
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,7 +378,51 @@ MonoBehaviour:
   descriptionText: {fileID: 4278104575842208923}
   artworkImage: {fileID: 3865837733437705048}
   manaText: {fileID: 6061516990239709999}
-  textSize: 0.8
+  textSize: 1
+--- !u!114 &3648637304729175010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322718767055606001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d734b25ad2d3c41b6796020bc54c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardBackground: {fileID: 1648200708948265891}
+  cardImage: {fileID: 3865837733437705048}
+  cardFrame: {fileID: 1012187541426075881}
+  cardName: {fileID: 1667748627216710482}
+  cardDescription: {fileID: 2173528912781326227}
+  cardMana: {fileID: 3579231341216565551}
+--- !u!61 &1011924262257034113
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322718767055606001}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.22, y: 20}
+    newSize: {x: 14.22, y: 20}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.22, y: 20}
+  m_EdgeRadius: 0
 --- !u!1 &4564366445240149207
 GameObject:
   m_ObjectHideFlags: 0
