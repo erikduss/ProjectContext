@@ -1,0 +1,5 @@
+Deze Branch is bedoeld voor het uploaden van nieuwe kaarten gemaakt in Unity. 
+
+Voeg de kaarten toe aan de "Cards" folder in het Unity project.
+
+Eigen art mag je toevoegen in de "AssetsImports" folder in het Unity project of hier een eigen folder voor maken.
