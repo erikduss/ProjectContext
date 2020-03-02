@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dragon_Of_Wisdom
   m_EditorClassIdentifier: 
   name: Dragon of Wisdom
+  objectName: Dragon_of_Wisdom
   description: "If your opponent has an active \nquestion, reduce the amount of \nwrong
     answers by 1."
   artwork: {fileID: 21300000, guid: d965fbbfab246ee4fa9268e637d40ab0, type: 3}

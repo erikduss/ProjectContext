@@ -283,6 +283,8 @@ GameObject:
   - component: {fileID: 3550095728930308649}
   - component: {fileID: 1536303471161860660}
   - component: {fileID: 5038942212851909679}
+  - component: {fileID: 5799530227646254184}
+  - component: {fileID: 1189462857184238448}
   m_Layer: 0
   m_Name: Question_Barrier
   m_TagString: Untagged
@@ -376,7 +378,52 @@ MonoBehaviour:
   descriptionText: {fileID: 4094756553241502988}
   artworkImage: {fileID: 3903399312440091343}
   manaText: {fileID: 6310470549250142904}
-  textSize: 0.8
+  textSize: 1
+--- !u!114 &5799530227646254184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067031668863957350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d734b25ad2d3c41b6796020bc54c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisSpell: {fileID: 11400000, guid: 870f934c06b7ec247a6778b78f9cf67d, type: 2}
+  cardBackground: {fileID: 1536303471161860660}
+  cardImage: {fileID: 3903399312440091343}
+  cardFrame: {fileID: 973231777305006462}
+  cardName: {fileID: 1488605272350937797}
+  cardDescription: {fileID: 2135958662244130308}
+  cardMana: {fileID: 3613687768331149496}
+--- !u!61 &1189462857184238448
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067031668863957350}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.22, y: 20}
+    newSize: {x: 14.22, y: 20}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.22, y: 20}
+  m_EdgeRadius: 0
 --- !u!1 &4384954663597083968
 GameObject:
   m_ObjectHideFlags: 0

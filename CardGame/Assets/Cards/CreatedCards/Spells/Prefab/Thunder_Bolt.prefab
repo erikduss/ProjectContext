@@ -636,12 +636,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d734b25ad2d3c41b6796020bc54c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisSpell: {fileID: 11400000, guid: 98422b4ecce838e4584459a03e41863a, type: 2}
   cardBackground: {fileID: 4629282507193493359}
   cardImage: {fileID: 7153722583404324756}
   cardFrame: {fileID: 6407801015723938853}
   cardName: {fileID: 4738946433908971422}
   cardDescription: {fileID: 5244717889017420639}
   cardMana: {fileID: 7443022841176565219}
+  gameManager: {fileID: 0}
 --- !u!1 &9069044564644523597
 GameObject:
   m_ObjectHideFlags: 0

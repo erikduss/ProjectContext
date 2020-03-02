@@ -321,8 +321,10 @@ GameObject:
   - component: {fileID: 1529518750490619423}
   - component: {fileID: 3544196209608642050}
   - component: {fileID: 7030228198290712601}
+  - component: {fileID: 5781272699642849884}
+  - component: {fileID: 1208922701148863812}
   m_Layer: 0
-  m_Name: Spell_Prefab
+  m_Name: Empty_Spell_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -414,7 +416,52 @@ MonoBehaviour:
   descriptionText: {fileID: 2066860932812147002}
   artworkImage: {fileID: 1321279330301628153}
   manaText: {fileID: 8353829816059911822}
-  textSize: 0.8
+  textSize: 1
+--- !u!114 &5781272699642849884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021403420743259472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d734b25ad2d3c41b6796020bc54c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisSpell: {fileID: 0}
+  cardBackground: {fileID: 3544196209608642050}
+  cardImage: {fileID: 1321279330301628153}
+  cardFrame: {fileID: 3025316515570007368}
+  cardName: {fileID: 3518752670012636915}
+  cardDescription: {fileID: 4168639339509969458}
+  cardMana: {fileID: 1611142510036536462}
+--- !u!61 &1208922701148863812
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021403420743259472}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.22, y: 20}
+    newSize: {x: 14.22, y: 20}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.22, y: 20}
+  m_EdgeRadius: 0
 --- !u!1 &2725929747983798505
 GameObject:
   m_ObjectHideFlags: 0

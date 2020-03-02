@@ -12,6 +12,7 @@ public class spellController : MonoBehaviour
     private Vector3 startPos;
     private Vector3 expandPos;
 
+    public Spell thisSpell;
 
     public SpriteRenderer cardBackground;
     public SpriteRenderer cardImage;
@@ -23,11 +24,12 @@ public class spellController : MonoBehaviour
     private bool grabbedCard = false;
     private bool madeBig = false;
 
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         startPos = this.transform.localPosition;
         expandPos = new Vector3(startPos.x, startPos.y + 3, startPos.z);
     }
@@ -84,11 +86,42 @@ public class spellController : MonoBehaviour
     {
         grabbedCard = false;
 
-        gameManager.SummonMinion("Spawned_Creature");
-
-        Destroy(this.gameObject);
-       //this.transform.localPosition = startPos;
-        //makeCardSmall();
+        switch (thisSpell.effect)
+        {
+            case Spell.Effect.Summon:
+                    if (gameManager.alivePlayerMinions < gameManager.maxBoardSize)
+                    {
+                        for (var i = 0; i < thisSpell.Value; i++)
+                        {
+                            if (gameManager.alivePlayerMinions < gameManager.maxBoardSize)
+                            {
+                                gameManager.SummonMinion("Spawned_Creature");
+                            }
+                        }
+                        Destroy(this.gameObject);
+                    }
+                    else
+                    {
+                        //THE PLAYER DOES NOT HAVE ENOUGH BOARD SPACE TO USE THIS SPELL.
+                    }
+                break;
+            case Spell.Effect.Damage_All_Enemies:
+                break;
+            case Spell.Effect.Damage_Single:
+                break;
+            case Spell.Effect.Detroy_Minion:
+                break;
+            case Spell.Effect.Heal_Friendly:
+                break;
+            case Spell.Effect.Heal_Single:
+                break;
+            case Spell.Effect.Set_Question:
+                break;
+            case Spell.Effect.Take_Control:
+                break;
+            default:
+                break;
+        }
     }
 
     private void makeCardBig()

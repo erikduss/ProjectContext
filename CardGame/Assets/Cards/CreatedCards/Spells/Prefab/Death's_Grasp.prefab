@@ -235,6 +235,8 @@ GameObject:
   - component: {fileID: 418604004848135283}
   - component: {fileID: 2439082379949624430}
   - component: {fileID: 8171425697563208309}
+  - component: {fileID: 4739871671779247830}
+  - component: {fileID: 7722768393682457686}
   m_Layer: 0
   m_Name: Death's_Grasp
   m_TagString: Untagged
@@ -250,7 +252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935526749601847100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.97, y: -2.5, z: 0}
+  m_LocalPosition: {x: -3.4181232, y: 0.15912604, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 1106207105968320066}
@@ -328,7 +330,52 @@ MonoBehaviour:
   descriptionText: {fileID: 889505171525798742}
   artworkImage: {fileID: 189432247571205269}
   manaText: {fileID: 7140488930861571298}
-  textSize: 0.8
+  textSize: 1
+--- !u!114 &4739871671779247830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935526749601847100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d734b25ad2d3c41b6796020bc54c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisSpell: {fileID: 11400000, guid: 1fa2db8d84c10f9498d5afd01149b8dc, type: 2}
+  cardBackground: {fileID: 2439082379949624430}
+  cardImage: {fileID: 189432247571205269}
+  cardFrame: {fileID: 4110320241058365220}
+  cardName: {fileID: 2315907688711781535}
+  cardDescription: {fileID: 2967630572710031454}
+  cardMana: {fileID: 481096532923240162}
+--- !u!61 &7722768393682457686
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935526749601847100}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.22, y: 20}
+    newSize: {x: 14.22, y: 20}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.22, y: 20}
+  m_EdgeRadius: 0
 --- !u!1 &2034616112019113292
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Spawned_Creature
   m_EditorClassIdentifier: 
   name: Creature
+  objectName: Spawned_Creature
   description: 
   artwork: {fileID: 21300000, guid: ac231ba979a279d4a9b9bd6886565842, type: 3}
   manaCost: 1

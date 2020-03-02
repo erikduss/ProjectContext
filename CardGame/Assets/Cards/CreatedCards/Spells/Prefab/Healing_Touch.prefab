@@ -496,12 +496,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d734b25ad2d3c41b6796020bc54c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisSpell: {fileID: 11400000, guid: dd798081c259ae845a73475d6fcd6db6, type: 2}
   cardBackground: {fileID: 8493018652887728968}
   cardImage: {fileID: 6243361651325682611}
   cardFrame: {fileID: 7858453200025530370}
   cardName: {fileID: 8369902739772076985}
   cardDescription: {fileID: 9019368373084258168}
   cardMana: {fileID: 5956341772075647428}
+  gameManager: {fileID: 0}
 --- !u!61 &296187147324779347
 BoxCollider2D:
   m_ObjectHideFlags: 0
