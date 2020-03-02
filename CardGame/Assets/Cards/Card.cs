@@ -16,7 +16,13 @@ public class Card : ScriptableObject {
 	public int attack;
 	public int health;
 
-	public void Print ()
+    public enum Effect { None, Destroy, Destroy_All_Minions, Reduce_Question }
+
+    public Effect effect;
+
+    public int Value;
+
+    public void Print ()
 	{
 		Debug.Log(name + ": " + description + " The card costs: " + manaCost);
 	}

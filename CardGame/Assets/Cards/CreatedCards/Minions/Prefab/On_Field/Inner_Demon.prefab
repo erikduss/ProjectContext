@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 896771320592102407}
   - component: {fileID: 2911447813351986202}
   - component: {fileID: 504010980372295440}
+  - component: {fileID: 4230475813445184124}
   m_Layer: 0
   m_Name: Inner_Demon
   m_TagString: Untagged
@@ -250,7 +251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379848571585154888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.88, y: -0.23, z: 0}
+  m_LocalPosition: {x: 3.6, y: -7.5, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 496767446579951158}
@@ -333,6 +334,19 @@ MonoBehaviour:
   attackText: {fileID: 2466547968992792726}
   healthText: {fileID: 7589522325966779317}
   textSize: 0.7
+--- !u!114 &4230475813445184124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379848571585154888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc479f8a795e89e4d99c618de8afc196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionID: 0
 --- !u!1 &622261786860903796
 GameObject:
   m_ObjectHideFlags: 0

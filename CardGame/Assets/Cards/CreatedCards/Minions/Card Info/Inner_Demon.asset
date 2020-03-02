@@ -19,3 +19,5 @@ MonoBehaviour:
   manaCost: 8
   attack: 6
   health: 6
+  effect: 2
+  Value: 0

@@ -197,6 +197,8 @@ GameObject:
   - component: {fileID: 2359729090982236532}
   - component: {fileID: 335803515008872809}
   - component: {fileID: 3039950124428823139}
+  - component: {fileID: -4651291019792562387}
+  - component: {fileID: 4541492166171941527}
   m_Layer: 0
   m_Name: Empty_Minion_card_prefab
   m_TagString: Untagged
@@ -295,6 +297,53 @@ MonoBehaviour:
   attackText: {fileID: 1077619904251065829}
   healthText: {fileID: 5016428897234179782}
   textSize: 0.7
+--- !u!114 &-4651291019792562387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2993758625551706683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b370b326d712a5440b818b95cda4210e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCard: {fileID: 0}
+  cardBackground: {fileID: 335803515008872809}
+  cardImage: {fileID: 2868969592525287826}
+  cardFrame: {fileID: 2052116955627782691}
+  cardName: {fileID: 383824945943363992}
+  cardDescription: {fileID: 891566820381281625}
+  cardMana: {fileID: 2584342413576139749}
+  cardAttack: {fileID: 107154097196959695}
+  cardHealth: {fileID: 4748059333864941930}
+--- !u!61 &4541492166171941527
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2993758625551706683}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.22, y: 20}
+    newSize: {x: 14.22, y: 20}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.22, y: 20}
+  m_EdgeRadius: 0
 --- !u!1 &3252009401863020061
 GameObject:
   m_ObjectHideFlags: 0

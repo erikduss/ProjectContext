@@ -151,13 +151,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions:
-  - {fileID: 8206550195690628108, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba, type: 3}
-  - {fileID: 379848571585154888, guid: a93961308a7947546907225aa08d6100, type: 3}
+  - {fileID: 8206550195690628108, guid: 431de80dca504ae4cab269c7ca47070b, type: 3}
+  - {fileID: 379848571585154888, guid: 8467dfa88c3eedc40bf33e3ddd503ff4, type: 3}
   - {fileID: 8777986989873912362, guid: fc686ea21423c024baeb1c1c9b93e822, type: 3}
   minionsData:
   - {fileID: 11400000, guid: 48ff8070a932d2b4e8566b594045fb2f, type: 2}
   - {fileID: 11400000, guid: 3bac1b65399b6fa44a4bef81c7410a8d, type: 2}
   - {fileID: 11400000, guid: 41f372d881fa1bf4eab495f796c0b942, type: 2}
+  activeMinions: []
+  alivePlayerMinions: 0
+  maxBoardSize: 7
 --- !u!4 &59334692
 Transform:
   m_ObjectHideFlags: 0
@@ -243,6 +246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Healing_Touch
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413046054740613146, guid: dcf2e45f808cab146b59ba02054c591e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcf2e45f808cab146b59ba02054c591e, type: 3}
@@ -395,6 +403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Death's_Grasp
+      objectReference: {fileID: 0}
+    - target: {fileID: 935526749601847100, guid: b0bcfc8063c0a5f4ab3fd442170c05b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0bcfc8063c0a5f4ab3fd442170c05b1, type: 3}
@@ -708,6 +721,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 7862290952207580221, guid: 26cb4f1319282cc4a802daeda9ddc82b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8939625716105038716, guid: 26cb4f1319282cc4a802daeda9ddc82b,
         type: 3}
       propertyPath: gameManager
@@ -726,6 +744,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Storm_of_Knives
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399626889094309459, guid: 1ef1709fe854f8e4cb76ce7a46c7a0d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2916548539659230492, guid: 1ef1709fe854f8e4cb76ce7a46c7a0d2,
         type: 3}
@@ -784,6 +807,96 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ef1709fe854f8e4cb76ce7a46c7a0d2, type: 3}
+--- !u!1001 &1796103754044564117
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 379848571585154888, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_Name
+      value: Inner_Demon
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a93961308a7947546907225aa08d6100, type: 3}
+--- !u!1 &1953165492467471140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 379848571585154888, guid: a93961308a7947546907225aa08d6100,
+    type: 3}
+  m_PrefabInstance: {fileID: 1796103754044564117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1953165492467471142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953165492467471140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc479f8a795e89e4d99c618de8afc196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionID: 0
+  health: 0
+  played: 0
 --- !u!1001 &5626130980588616503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -795,6 +908,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plague_of_Creatures
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078017394645600354, guid: 34a5e9a380f9fde4490048b72f753fd1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7714294326645273389, guid: 34a5e9a380f9fde4490048b72f753fd1,
         type: 3}
@@ -994,5 +1112,79 @@ PrefabInstance:
       propertyPath: m_Name
       value: Question_Barrier
       objectReference: {fileID: 0}
+    - target: {fileID: 4067031668863957350, guid: cdd9f85df53a28043993539080d1b9ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdd9f85df53a28043993539080d1b9ce, type: 3}
+--- !u!1001 &8611302994905872398
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8206550195690628108, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_Name
+      value: Dragon_Of_Wisdom
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba, type: 3}

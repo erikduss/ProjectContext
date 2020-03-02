@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 8707432169568395075}
   - component: {fileID: 6683748610697756510}
   - component: {fileID: 8239442169353733204}
+  - component: {fileID: -2874370790446607968}
   m_Layer: 0
   m_Name: Dragon_Of_Wisdom
   m_TagString: Untagged
@@ -484,7 +485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8206550195690628108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.06, y: -0.23, z: 0}
+  m_LocalPosition: {x: 0, y: -7.5, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 8233183694901779826}
@@ -567,6 +568,19 @@ MonoBehaviour:
   attackText: {fileID: 6240876242158910418}
   healthText: {fileID: 2158805282630523121}
   textSize: 0.7
+--- !u!114 &-2874370790446607968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206550195690628108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc479f8a795e89e4d99c618de8afc196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionID: 0
 --- !u!1 &8451294034228318250
 GameObject:
   m_ObjectHideFlags: 0

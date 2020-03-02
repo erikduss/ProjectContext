@@ -68,4 +68,12 @@ public class BoardSpot
         currentHealthMinion = maxHealth;
         boardSpotID = boardID;
     }
+
+    public void killMinion()
+    {
+        occupied = false;
+        attackMinion = 0;
+        maxHealthMinion = 0;
+        currentHealthMinion = 0;
+    }
 }
