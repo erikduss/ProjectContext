@@ -75,7 +75,11 @@ public class GameManager : MonoBehaviour
                 spot.killMinion();
             }
         }
-        foreach (GameObject minion in activeMinions)
+
+        List<GameObject> minionsToKill = new List<GameObject>();
+        minionsToKill.AddRange(GameObject.FindGameObjectsWithTag("PlayedMinion"));
+
+        foreach (GameObject minion in minionsToKill)
         {
             //Destroy(minion);
             minion.GetComponent<minionBehavior>().health = 0;

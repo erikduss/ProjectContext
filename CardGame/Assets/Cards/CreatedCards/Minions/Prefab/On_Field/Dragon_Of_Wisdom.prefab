@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: -2874370790446607968}
   m_Layer: 0
   m_Name: Dragon_Of_Wisdom
-  m_TagString: Untagged
+  m_TagString: PlayedMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -581,6 +581,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minionID: 0
+  health: 0
+  played: 0
 --- !u!1 &8451294034228318250
 GameObject:
   m_ObjectHideFlags: 0

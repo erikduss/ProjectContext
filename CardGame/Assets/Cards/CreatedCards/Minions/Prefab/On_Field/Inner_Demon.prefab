@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 4230475813445184124}
   m_Layer: 0
   m_Name: Inner_Demon
-  m_TagString: Untagged
+  m_TagString: PlayedMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -346,7 +346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc479f8a795e89e4d99c618de8afc196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minionID: 0
+  minionID: 5
+  health: 6
+  played: 1
 --- !u!1 &622261786860903796
 GameObject:
   m_ObjectHideFlags: 0
