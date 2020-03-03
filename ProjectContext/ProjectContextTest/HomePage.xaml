@@ -1,0 +1,25 @@
+﻿<Window x:Class="ProjectContextTest.HomePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectContextTest"
+        mc:Ignorable="d"
+        Title="HomePage" Height="1920" Width="1080" Background="LightGray" WindowState="Maximized" WindowStyle="None">
+    <Grid Width="auto" Height="auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+
+        <Button x:Name="btn_startGame" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="183" Height="79" Grid.Row="3" Grid.Column="2"/>
+
+    </Grid>
+</Window>

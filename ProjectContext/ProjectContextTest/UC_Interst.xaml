@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="ProjectContextTest.UC_Interst"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectContextTest"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="350">
+    <Grid MaxWidth="350" HorizontalAlignment="Left">
+        <TextBox Name="txt_interest" FontSize="24" Height="50" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="300"/>
+        <Button Name="btn_Remove" Width="50" Height="50" Content="X" Margin="300,0,0,0" FontSize="24"/>
+    </Grid>
+</UserControl>
