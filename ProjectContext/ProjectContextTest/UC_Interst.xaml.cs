@@ -16,25 +16,13 @@ using System.Windows.Shapes;
 namespace ProjectContextTest
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UC_Interst.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UC_Interst : UserControl
     {
-        public MainWindow()
+        public UC_Interst()
         {
             InitializeComponent();
-        }
-
-        private void btn_Create_Click(object sender, RoutedEventArgs e)
-        {
-            CreateProfile profileWindow = new CreateProfile();
-            profileWindow.Show();
-            this.Close();
-        }
-
-        private void btn_Login_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
