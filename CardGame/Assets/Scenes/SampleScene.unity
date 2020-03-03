@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 5893859410189181781, guid: dcf2e45f808cab146b59ba02054c591e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.6
+      value: 10.8
       objectReference: {fileID: 0}
     - target: {fileID: 5893859410189181781, guid: dcf2e45f808cab146b59ba02054c591e,
         type: 3}
@@ -250,7 +250,7 @@ PrefabInstance:
     - target: {fileID: 6413046054740613146, guid: dcf2e45f808cab146b59ba02054c591e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcf2e45f808cab146b59ba02054c591e, type: 3}
@@ -407,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 935526749601847100, guid: b0bcfc8063c0a5f4ab3fd442170c05b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0bcfc8063c0a5f4ab3fd442170c05b1, type: 3}
@@ -659,7 +659,7 @@ PrefabInstance:
     - target: {fileID: 7217283893554710386, guid: 26cb4f1319282cc4a802daeda9ddc82b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10.8
       objectReference: {fileID: 0}
     - target: {fileID: 7217283893554710386, guid: 26cb4f1319282cc4a802daeda9ddc82b,
         type: 3}
@@ -724,7 +724,7 @@ PrefabInstance:
     - target: {fileID: 7862290952207580221, guid: 26cb4f1319282cc4a802daeda9ddc82b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8939625716105038716, guid: 26cb4f1319282cc4a802daeda9ddc82b,
         type: 3}
@@ -818,6 +818,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Inner_Demon
+      objectReference: {fileID: 0}
+    - target: {fileID: 379848571585154888, guid: a93961308a7947546907225aa08d6100,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 896771320592102407, guid: a93961308a7947546907225aa08d6100,
         type: 3}
@@ -917,7 +922,7 @@ PrefabInstance:
     - target: {fileID: 7714294326645273389, guid: 34a5e9a380f9fde4490048b72f753fd1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7714294326645273389, guid: 34a5e9a380f9fde4490048b72f753fd1,
         type: 3}
@@ -1055,7 +1060,7 @@ PrefabInstance:
     - target: {fileID: 3550095728930308649, guid: cdd9f85df53a28043993539080d1b9ce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3550095728930308649, guid: cdd9f85df53a28043993539080d1b9ce,
         type: 3}
@@ -1115,7 +1120,7 @@ PrefabInstance:
     - target: {fileID: 4067031668863957350, guid: cdd9f85df53a28043993539080d1b9ce,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdd9f85df53a28043993539080d1b9ce, type: 3}
@@ -1130,6 +1135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dragon_Of_Wisdom
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206550195690628108, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8707432169568395075, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba,
         type: 3}

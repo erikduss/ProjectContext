@@ -46,7 +46,7 @@ namespace ProjectContextTest
             try
             {
                 process = new Process();
-                process.StartInfo.FileName = "UnityGame.exe";
+                process.StartInfo.FileName = "CardGame.exe";
                 process.StartInfo.Arguments = "-parentHWND " + canvasPanel.Handle.ToInt32() + " " + Environment.CommandLine;
                 process.StartInfo.UseShellExecute = true;
                 process.StartInfo.CreateNoWindow = true;
@@ -62,7 +62,7 @@ namespace ProjectContextTest
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + ".\nCheck if Container.exe is placed next to UnityGame.exe.");
+                MessageBox.Show(ex.Message + ".\nCheck if Container.exe is placed next to CardGame.exe.");
             }
 
         }

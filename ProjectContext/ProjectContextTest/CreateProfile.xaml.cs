@@ -19,7 +19,6 @@ namespace ProjectContextTest
     /// </summary>
     public partial class CreateProfile : Window
     {
-        List<UC_Interst> interests = new List<UC_Interst>();
 
         public CreateProfile()
         {
@@ -40,7 +39,33 @@ namespace ProjectContextTest
 
         private void btn_Create_Click(object sender, RoutedEventArgs e)
         {
+            if(txt_Age.Text.Length < 1 || txt_Name.Text.Length < 1 || cbox_Gender.Text.Length < 1 || cbox_Role.Text.Length < 1)
+            {
+                MessageBox.Show("Please fill in your name, age, gender and role.");
+                return;
+            }
+            if (stack_interests.Children.Count > 0)
+            {
+                foreach (UC_Interst uc in stack_interests.Children)
+                {
+                    if (uc.txt_interest.Text.Length < 1)
+                    {
+                        MessageBox.Show("One or more of your interests is empty. Please make sure they are all filled in and remove empty ones.");
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter at least 1 interest.");
+                return;
+            }
 
+            // DO THINGS WITH INFORMATION HERE, SAVE IT SO IT CAN BE USED FOR LATER.
+
+            HomePage home = new HomePage();
+            home.Show();
+            this.Close();
         }
 
         private void btn_ClearEmpty_Click(object sender, RoutedEventArgs e)

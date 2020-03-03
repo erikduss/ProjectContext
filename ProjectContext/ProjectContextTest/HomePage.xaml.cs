@@ -23,5 +23,12 @@ namespace ProjectContextTest
         {
             InitializeComponent();
         }
+
+        private void btn_startGame_Click(object sender, RoutedEventArgs e)
+        {
+            GameLauncher game = new GameLauncher();
+            game.Show();
+            this.Close();
+        }
     }
 }

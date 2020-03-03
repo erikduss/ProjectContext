@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectContextTest"
         mc:Ignorable="d"
-        Title="HomePage" Height="1920" Width="1080" Background="LightGray" WindowState="Maximized" WindowStyle="None">
+        Title="HomePage" Height="1080" Width="1920" Background="LightGray" WindowState="Maximized" WindowStyle="None">
     <Grid Width="auto" Height="auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
 
-        <Button x:Name="btn_startGame" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="183" Height="79" Grid.Row="3" Grid.Column="2"/>
+        <Button x:Name="btn_startGame" Grid.Column="1" Grid.Row="1" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="183" Height="79" Click="btn_startGame_Click"/>
 
     </Grid>
 </Window>
