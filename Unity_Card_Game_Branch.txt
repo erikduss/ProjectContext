@@ -1,0 +1,5 @@
+Deze Branch is bedoeld voor het updaten van de Unity Game bij het project.
+
+Hieronder valt voornamelijk code en design. ER IS EEN APARTE BRANCH VOOR DE KAARTEN.
+
+(Voornamelijk alleen Erik zal hier uploaden)

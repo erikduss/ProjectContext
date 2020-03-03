@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Card", menuName = "Card")]
-public class Card : ScriptableObject {
+[CreateAssetMenu(fileName = "New Spell", menuName = "Spell")]
+public class Spell : ScriptableObject {
 
 	public new string name;
-    public new string objectName;
     [TextArea]
     public string description;
 
 	public Sprite artwork;
 
 	public int manaCost;
-	public int attack;
-	public int health;
 
-    public enum Effect { None, Destroy, Destroy_All_Minions, Reduce_Question }
+    public enum Effect { Summon, Damage_Single, Damage_All_Enemies, Heal_Single, Heal_Friendly, Set_Question, Take_Control, Detroy_Minion }
 
     public Effect effect;
 

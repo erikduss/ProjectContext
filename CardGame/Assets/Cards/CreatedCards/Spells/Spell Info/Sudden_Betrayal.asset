@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7418fe6a2e1ac364fb37a49d3533cdc0, type: 3}
+  m_Name: Sudden_Betrayal
+  m_EditorClassIdentifier: 
+  name: Sudden Betrayal
+  description: Take control of an enemy minion
+  artwork: {fileID: 21300000, guid: b7e42ba5ca9b7f14dadfc5ecf5507ed3, type: 3}
+  manaCost: 6
+  effect: 6
+  Value: 0
