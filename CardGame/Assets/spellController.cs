@@ -37,6 +37,8 @@ public class spellController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.pauseInteractions) return;
+
         if (grabbedCard)
         {
             if (!madeBig)
@@ -50,6 +52,7 @@ public class spellController : MonoBehaviour
 
     void OnMouseEnter()
     {
+        if (gameManager.pauseInteractions) return;
         if (grabbedCard) return;
         
         this.transform.localPosition = expandPos;
@@ -67,7 +70,8 @@ public class spellController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(!grabbedCard)
+        if (gameManager.pauseInteractions) return;
+        if (!grabbedCard)
         {
             GrabCard();
         }
@@ -116,6 +120,8 @@ public class spellController : MonoBehaviour
             case Spell.Effect.Heal_Single:
                 break;
             case Spell.Effect.Set_Question:
+                gameManager.setQuestion();
+                Destroy(this.gameObject);
                 break;
             case Spell.Effect.Take_Control:
                 break;

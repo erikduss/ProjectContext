@@ -39,6 +39,8 @@ public class minionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.pauseInteractions) return;
+
         if (grabbedCard)
         {
             if (!madeBig)
@@ -52,6 +54,7 @@ public class minionController : MonoBehaviour
 
     void OnMouseEnter()
     {
+        if (gameManager.pauseInteractions) return;
         if (grabbedCard) return;
         
         this.transform.localPosition = expandPos;
@@ -69,7 +72,8 @@ public class minionController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(!grabbedCard)
+        if (gameManager.pauseInteractions) return;
+        if (!grabbedCard)
         {
             GrabCard();
         }

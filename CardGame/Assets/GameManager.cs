@@ -1,11 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> minions;
     public List<Card> minionsData;
+
+    public GameObject questionCreationPanel;
+    public Button btn_submitQuestion;
+
+    private Question mainPlayerQuestion = new Question();
+
+    public Text question;
+    public Text fake_answer_1;
+    public Text fake_answer_2;
+    public Text correct_answer;
+
+    public Text errorMessage;
 
     public List<GameObject> activeMinions = new List<GameObject>();
 
@@ -20,9 +33,13 @@ public class GameManager : MonoBehaviour
 
     private int spawnedMinions = 0;
 
+    public bool pauseInteractions = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        questionCreationPanel.SetActive(false);
+        btn_submitQuestion.onClick.AddListener(submitQuestion);
         for(int i = 0; i< maxBoardSize; i++)
         {
             mainPlayerBoard.Add(new BoardSpot(i));
@@ -84,6 +101,32 @@ public class GameManager : MonoBehaviour
             //Destroy(minion);
             minion.GetComponent<minionBehavior>().health = 0;
             //activeMinions.Remove(minion);
+        }
+
+        activeMinions.Clear();
+        alivePlayerMinions = 0;
+    }
+
+    public void setQuestion()
+    {
+        pauseInteractions = true;
+        questionCreationPanel.SetActive(true);
+    }
+
+    public void submitQuestion()
+    {
+        if(question.text.Length > 0 && fake_answer_1.text.Length > 0 && fake_answer_2.text.Length > 0 && correct_answer.text.Length > 0)
+        {
+            pauseInteractions = false;
+            mainPlayerQuestion.question = question.text;
+            mainPlayerQuestion.fakeAnswer_1 = fake_answer_1.text;
+            mainPlayerQuestion.fakeAnswer_2 = fake_answer_2.text;
+            mainPlayerQuestion.correctAnswer = correct_answer.text;
+            questionCreationPanel.SetActive(false);
+        }
+        else
+        {
+            errorMessage.text = "Not all required information has been filled in";
         }
     }
 
