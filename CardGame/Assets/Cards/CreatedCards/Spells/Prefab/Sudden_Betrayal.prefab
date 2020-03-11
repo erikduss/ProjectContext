@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 3169456561753346657}
   m_Layer: 0
   m_Name: Sudden_Betrayal
-  m_TagString: Card
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,7 +317,6 @@ MonoBehaviour:
   cardName: {fileID: 3996466588628797046}
   cardDescription: {fileID: 4502096310355446455}
   cardMana: {fileID: 1294994120290530315}
-  gameManager: {fileID: 0}
 --- !u!61 &3169456561753346657
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8391486380428636602}
   m_Layer: 0
   m_Name: Storm_of_knives
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

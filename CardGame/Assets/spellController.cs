@@ -12,6 +12,8 @@ public class spellController : MonoBehaviour
     private Vector3 startPos;
     private Vector3 expandPos;
 
+    public bool isOpponentCard = false;
+
     public Spell thisSpell;
 
     public SpriteRenderer cardBackground;
@@ -31,7 +33,14 @@ public class spellController : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         startPos = this.transform.localPosition;
-        expandPos = new Vector3(startPos.x, startPos.y + 3, startPos.z);
+        if (!isOpponentCard)
+        {
+            expandPos = new Vector3(startPos.x, startPos.y + 3, startPos.z);
+        }
+        else
+        {
+            expandPos = new Vector3(startPos.x, startPos.y - 3, startPos.z);
+        }
     }
 
     // Update is called once per frame
@@ -93,20 +102,37 @@ public class spellController : MonoBehaviour
         switch (thisSpell.effect)
         {
             case Spell.Effect.Summon:
-                    if (gameManager.alivePlayerMinions < gameManager.maxBoardSize)
+                    if (!isOpponentCard && gameManager.aliveMinionsMainPlayer < gameManager.maxBoardSize)
                     {
                         for (var i = 0; i < thisSpell.Value; i++)
                         {
-                            if (gameManager.alivePlayerMinions < gameManager.maxBoardSize)
+                            if (gameManager.aliveMinionsMainPlayer < gameManager.maxBoardSize)
                             {
                                 gameManager.SummonMinion("Spawned_Creature");
                             }
                         }
+                        gameManager.cardsInHand.Remove(this.gameObject);
+                        gameManager.amountOfCardsInHand--;
+                        gameManager.rearrangeCards(1);
+                        Destroy(this.gameObject);
+                    }
+                    else if(isOpponentCard && gameManager.aliveMinionsOpponent < gameManager.maxBoardSize)
+                    {
+                        for (var i = 0; i < thisSpell.Value; i++)
+                        {
+                            if (gameManager.aliveMinionsOpponent < gameManager.maxBoardSize)
+                            {
+                                gameManager.SummonMinion("Spawned_Creature");
+                            }
+                        }
+                        gameManager.cardsInOpponentHand.Remove(this.gameObject);
+                        gameManager.opponentCardsInHand--;
+                        gameManager.rearrangeCards(2);
                         Destroy(this.gameObject);
                     }
                     else
                     {
-                        //THE PLAYER DOES NOT HAVE ENOUGH BOARD SPACE TO USE THIS SPELL.
+
                     }
                 break;
             case Spell.Effect.Damage_All_Enemies:

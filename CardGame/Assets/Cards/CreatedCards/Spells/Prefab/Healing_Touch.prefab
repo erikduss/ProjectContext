@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 296187147324779347}
   m_Layer: 0
   m_Name: Healing_Touch
-  m_TagString: Card
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -503,7 +503,6 @@ MonoBehaviour:
   cardName: {fileID: 8369902739772076985}
   cardDescription: {fileID: 9019368373084258168}
   cardMana: {fileID: 5956341772075647428}
-  gameManager: {fileID: 0}
 --- !u!61 &296187147324779347
 BoxCollider2D:
   m_ObjectHideFlags: 0

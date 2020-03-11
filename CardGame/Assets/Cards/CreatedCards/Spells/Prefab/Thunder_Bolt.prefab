@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 8939625716105038716}
   m_Layer: 0
   m_Name: Thunder_Bolt
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -643,7 +643,6 @@ MonoBehaviour:
   cardName: {fileID: 4738946433908971422}
   cardDescription: {fileID: 5244717889017420639}
   cardMana: {fileID: 7443022841176565219}
-  gameManager: {fileID: 0}
 --- !u!1 &9069044564644523597
 GameObject:
   m_ObjectHideFlags: 0

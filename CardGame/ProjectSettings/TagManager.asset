@@ -7,6 +7,9 @@ TagManager:
   - Card
   - PlayedMinion
   - QuestionAnswer
+  - Board
+  - Spell
+  - Minion
   layers:
   - Default
   - TransparentFX

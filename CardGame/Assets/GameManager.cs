@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject playBoard;
+
     public List<GameObject> minionsToSpawnOnField;
     public List<Card> minionsData;
 
     public List<GameObject> playableCards;
+    private List<GameObject> opponentDeck;
 
     public GameObject questionCreationPanel;
     public Button btn_submitQuestion;
@@ -25,6 +28,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> activeMinions = new List<GameObject>();
 
     public int alivePlayerMinions = 0;
+    public int aliveMinionsMainPlayer = 0;
+    public int aliveMinionsOpponent = 0;
 
     public List<BoardSpot> mainPlayerBoard = new List<BoardSpot>();
     public List<BoardSpot> opponentBoard = new List<BoardSpot>();
@@ -33,10 +38,13 @@ public class GameManager : MonoBehaviour
     private List<int> cardsInHandXPos = new List<int> { -12, -8, -4, 0, 4, 8, 12 };
 
     private int startingCards = 3;
-    private int amountOfCardsInHand = 0;
+    public int amountOfCardsInHand = 0;
     private int maxHandSize = 7;
 
-    private List<GameObject> cardsInHand = new List<GameObject>();
+    public int opponentCardsInHand = 0;
+
+    public List<GameObject> cardsInHand = new List<GameObject>();
+    public List<GameObject> cardsInOpponentHand = new List<GameObject>();
 
     public int maxBoardSize = 7;
 
@@ -51,6 +59,9 @@ public class GameManager : MonoBehaviour
 
     public Text manaText;
     public Text cardsText;
+    public Text playerText;
+
+    private int playerTurn = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -63,35 +74,14 @@ public class GameManager : MonoBehaviour
             opponentBoard.Add(new BoardSpot(i));
         }
 
+        opponentDeck = new List<GameObject>(playableCards);
+
         List<int> alreadyPickedCards = new List<int>();
 
         for(int i = 0; i<= startingCards; i++)
         {
-            int cardNumber = Random.Range(0, playableCards.Count);
-            if (alreadyPickedCards.Contains(cardNumber))
-            {
-                cardNumber = Random.Range(0, playableCards.Count);
-                if (alreadyPickedCards.Contains(cardNumber))
-                {
-                    cardNumber = Random.Range(0, playableCards.Count);
-                    if (alreadyPickedCards.Contains(cardNumber))
-                    {
-                        cardNumber = Random.Range(0, playableCards.Count);
-                        if (alreadyPickedCards.Contains(cardNumber))
-                        {
-                            cardNumber = Random.Range(0, playableCards.Count);
-                            Debug.Log("TRIED TO GET MORE CARDS BUT FAILED");
-                        }
-                    }
-                }
-            }
-            cardsInHand.Add(playableCards[cardNumber]);
-        }
-        for (int i = 0; i < cardsInHand.Count; i++)
-        {
-            playableCards.Remove(cardsInHand[i]);
-            Instantiate(cardsInHand[i], new Vector3(cardsInHandXPos[amountOfCardsInHand], -7.5f, 0), Quaternion.identity); //Spawn card in hand
-            amountOfCardsInHand++;
+            drawCard(1);
+            drawCard(2);
         }
         setTurn(1);
         cardsText.text = "Cards left: " + playableCards.Count;
@@ -105,12 +95,21 @@ public class GameManager : MonoBehaviour
 
     public void SummonMinion(string minionName)
     {
-        int listID = mainPlayerBoard.FindIndex(a => a.Occupied == false);
+        int listID = 0;
+
+        if(playerTurn == 1)
+        {
+            listID = mainPlayerBoard.FindIndex(a => a.Occupied == false);
+        }
+        else
+        {
+            listID = opponentBoard.FindIndex(a => a.Occupied == false);
+        }
 
         GameObject minionToSpawn = minionsToSpawnOnField.Find(x => x.name == minionName);
         Card minionData = minionsData.Find(x => x.objectName == minionName);
 
-        int minionX = minionXPos[alivePlayerMinions];
+        int minionX = minionXPos[listID];
 
         alivePlayerMinions++;
         spawnedMinions++;
@@ -119,11 +118,29 @@ public class GameManager : MonoBehaviour
         minionToSpawn.GetComponent<minionBehavior>().health = minionData.health;
         minionToSpawn.GetComponent<minionBehavior>().played = true;
 
-        mainPlayerBoard[listID].placeMinion(minionData.attack, minionData.health, alivePlayerMinions); //Add the minion data to the board
+        if (playerTurn == 1)
+        {
+            mainPlayerBoard[listID].placeMinion(minionData.attack, minionData.health, alivePlayerMinions); //Add the minion data to the board
+        }
+        else
+        {
+            opponentBoard[listID].placeMinion(minionData.attack, minionData.health, alivePlayerMinions); //Add the minion data to the board
+        }
 
         activeMinions.Add(minionToSpawn);
 
-        Instantiate(minionToSpawn, new Vector3(minionX, 0, 0), Quaternion.identity); //Spawn minion
+        if (playerTurn == 1)
+        {
+            GameObject minion = Instantiate(minionToSpawn, new Vector3(minionX, -2.5f, 0), Quaternion.identity); //Spawn minion
+            aliveMinionsMainPlayer++;
+            minion.transform.parent = playBoard.transform;
+        }
+        else
+        {
+            GameObject minion = Instantiate(minionToSpawn, new Vector3(minionX, -2.5f, 0), new Quaternion(0,0,0,0)); //Spawn minion
+            aliveMinionsOpponent++;
+            minion.transform.parent = playBoard.transform;
+        } 
     }
 
     public void destroyAllMinions()
@@ -155,6 +172,8 @@ public class GameManager : MonoBehaviour
 
         activeMinions.Clear();
         alivePlayerMinions = 0;
+        aliveMinionsOpponent = 0;
+        aliveMinionsMainPlayer = 0;
     }
 
     public void setQuestion()
@@ -210,20 +229,84 @@ public class GameManager : MonoBehaviour
 
     public void endTurn()
     {
-        if(currentTurn < maxMana) currentTurn++;
+        if (playerTurn == 1)
+        {
+            playerTurn = 2;
+        }
+        else
+        {
+            playerTurn = 1;
+            if (currentTurn < maxMana) currentTurn++;
+        }
+
+        playerText.text = "Turn: Player " + playerTurn;
+
+        drawCard(playerTurn);
         setTurn(currentTurn);
-        drawCard();
+       
+        int rotation = 0;
+        if (playBoard.transform.rotation.x == 0) rotation = 180;
+        playBoard.transform.rotation = new Quaternion(rotation, 0, 0, 0);
     }
 
-    public void drawCard()
+    public void drawCard(int player)
     {
-        if(amountOfCardsInHand < maxHandSize)
+        if(player == 1)
         {
-            int cardNumber = Random.Range(0, playableCards.Count);
-            Instantiate(playableCards[cardNumber], new Vector3(cardsInHandXPos[amountOfCardsInHand], -7.5f, 0), Quaternion.identity); //Spawn card in hand
-            playableCards.Remove(playableCards[cardNumber]);
-            amountOfCardsInHand++;
-            cardsText.text = "Cards left: " + playableCards.Count;
+            if (amountOfCardsInHand < maxHandSize)
+            {
+                int cardNumber = Random.Range(0, playableCards.Count);
+                GameObject playerCard = Instantiate(playableCards[cardNumber], new Vector3(cardsInHandXPos[amountOfCardsInHand], -7.5f, 0), new Quaternion(0, 0, 0, 0)); //Spawn card in hand
+                playerCard.transform.parent = playBoard.transform;
+                playerCard.transform.rotation = new Quaternion(0, 0, 0, 0);
+                playerCard.transform.localPosition = new Vector3(cardsInHandXPos[amountOfCardsInHand], -7.5f, 0);
+                playableCards.Remove(playableCards[cardNumber]);
+                amountOfCardsInHand++;
+                cardsText.text = "Cards left: " + playableCards.Count;
+                cardsInHand.Add(playerCard);
+            }
+        }
+        else
+        {
+            if (opponentCardsInHand < maxHandSize)
+            {
+                int cardNumber = Random.Range(0, opponentDeck.Count);
+                GameObject playerCard = Instantiate(opponentDeck[cardNumber], new Vector3(cardsInHandXPos[opponentCardsInHand], 7.5f, 0), new Quaternion(180,0,0,0)); //Spawn card in hand
+                playerCard.transform.parent = playBoard.transform;
+                playerCard.transform.rotation = new Quaternion(180, 0, 0, 0);
+                playerCard.transform.position = new Vector3(cardsInHandXPos[opponentCardsInHand], 7.5f, 0);
+                opponentDeck.Remove(opponentDeck[cardNumber]);
+                opponentCardsInHand++;
+                cardsText.text = "Cards left: " + opponentDeck.Count;
+                cardsInOpponentHand.Add(playerCard);
+
+                if (playerCard.tag == "Minion")
+                {
+                    playerCard.GetComponent<minionController>().isOpponentCard = true;
+                }
+                else if (playerCard.tag == "Spell")
+                {
+                    playerCard.GetComponent<spellController>().isOpponentCard = true;
+                }
+            }
+        }
+    }
+
+    public void rearrangeCards(int player)
+    {
+        if(player == 1)
+        {
+            for (int i = 0; i < cardsInHand.Count; i++)
+            {
+                cardsInHand[i].transform.position = new Vector3(cardsInHandXPos[i], cardsInHand[i].transform.position.y, cardsInHand[i].transform.position.z);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < cardsInOpponentHand.Count; i++)
+            {
+                cardsInOpponentHand[i].transform.position = new Vector3(cardsInHandXPos[i], cardsInOpponentHand[i].transform.position.y, cardsInOpponentHand[i].transform.position.z);
+            }
         }
     }
 }
