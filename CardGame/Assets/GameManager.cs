@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> minions;
+    public List<GameObject> minionsToSpawnOnField;
     public List<Card> minionsData;
+
+    public List<GameObject> playableCards;
 
     public GameObject questionCreationPanel;
     public Button btn_submitQuestion;
@@ -28,12 +30,27 @@ public class GameManager : MonoBehaviour
     public List<BoardSpot> opponentBoard = new List<BoardSpot>();
 
     private List<int> minionXPos = new List<int> {-12, -8, -4, 0, 4, 8, 12 };
+    private List<int> cardsInHandXPos = new List<int> { -12, -8, -4, 0, 4, 8, 12 };
+
+    private int startingCards = 3;
+    private int amountOfCardsInHand = 0;
+    private int maxHandSize = 7;
+
+    private List<GameObject> cardsInHand = new List<GameObject>();
 
     public int maxBoardSize = 7;
 
     private int spawnedMinions = 0;
 
     public bool pauseInteractions = false;
+
+    private int currentMana = 0;
+    private int maxManaThisTurn = 0;
+    private int currentTurn = 0;
+    private int maxMana = 10;
+
+    public Text manaText;
+    public Text cardsText;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +62,39 @@ public class GameManager : MonoBehaviour
             mainPlayerBoard.Add(new BoardSpot(i));
             opponentBoard.Add(new BoardSpot(i));
         }
+
+        List<int> alreadyPickedCards = new List<int>();
+
+        for(int i = 0; i<= startingCards; i++)
+        {
+            int cardNumber = Random.Range(0, playableCards.Count);
+            if (alreadyPickedCards.Contains(cardNumber))
+            {
+                cardNumber = Random.Range(0, playableCards.Count);
+                if (alreadyPickedCards.Contains(cardNumber))
+                {
+                    cardNumber = Random.Range(0, playableCards.Count);
+                    if (alreadyPickedCards.Contains(cardNumber))
+                    {
+                        cardNumber = Random.Range(0, playableCards.Count);
+                        if (alreadyPickedCards.Contains(cardNumber))
+                        {
+                            cardNumber = Random.Range(0, playableCards.Count);
+                            Debug.Log("TRIED TO GET MORE CARDS BUT FAILED");
+                        }
+                    }
+                }
+            }
+            cardsInHand.Add(playableCards[cardNumber]);
+        }
+        for (int i = 0; i < cardsInHand.Count; i++)
+        {
+            playableCards.Remove(cardsInHand[i]);
+            Instantiate(cardsInHand[i], new Vector3(cardsInHandXPos[amountOfCardsInHand], -7.5f, 0), Quaternion.identity); //Spawn card in hand
+            amountOfCardsInHand++;
+        }
+        setTurn(1);
+        cardsText.text = "Cards left: " + playableCards.Count;
     }
 
     // Update is called once per frame
@@ -57,7 +107,7 @@ public class GameManager : MonoBehaviour
     {
         int listID = mainPlayerBoard.FindIndex(a => a.Occupied == false);
 
-        GameObject minionToSpawn = minions.Find(x => x.name == minionName);
+        GameObject minionToSpawn = minionsToSpawnOnField.Find(x => x.name == minionName);
         Card minionData = minionsData.Find(x => x.objectName == minionName);
 
         int minionX = minionXPos[alivePlayerMinions];
@@ -148,5 +198,32 @@ public class GameManager : MonoBehaviour
     public void healPlayer()
     {
 
+    }
+
+    private void setTurn(int mana)
+    {
+        currentMana = mana;
+        currentTurn = mana;
+        maxManaThisTurn = mana;
+        manaText.text = "Mana: " + currentMana + "/" + maxManaThisTurn;
+    }
+
+    public void endTurn()
+    {
+        if(currentTurn < maxMana) currentTurn++;
+        setTurn(currentTurn);
+        drawCard();
+    }
+
+    public void drawCard()
+    {
+        if(amountOfCardsInHand < maxHandSize)
+        {
+            int cardNumber = Random.Range(0, playableCards.Count);
+            Instantiate(playableCards[cardNumber], new Vector3(cardsInHandXPos[amountOfCardsInHand], -7.5f, 0), Quaternion.identity); //Spawn card in hand
+            playableCards.Remove(playableCards[cardNumber]);
+            amountOfCardsInHand++;
+            cardsText.text = "Cards left: " + playableCards.Count;
+        }
     }
 }
