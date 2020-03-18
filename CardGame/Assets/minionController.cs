@@ -34,15 +34,7 @@ public class minionController : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        startPos = this.transform.localPosition;
-        if (!isOpponentCard)
-        {
-            expandPos = new Vector3(startPos.x, startPos.y + 3, startPos.z);
-        }
-        else
-        {
-            expandPos = new Vector3(startPos.x, startPos.y - 3, startPos.z);
-        }
+        setNewPos(this.transform.localPosition);
     }
 
     // Update is called once per frame
@@ -58,6 +50,19 @@ public class minionController : MonoBehaviour
             }
             Vector2 mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = Vector2.Lerp(transform.position, mouseposition, 0.2f);
+        }
+    }
+
+    public void setNewPos(Vector3 pos)
+    {
+        startPos = pos;
+        if (!isOpponentCard)
+        {
+            expandPos = new Vector3(startPos.x, startPos.y + 3, startPos.z);
+        }
+        else
+        {
+            expandPos = new Vector3(startPos.x, startPos.y - 3, startPos.z);
         }
     }
 

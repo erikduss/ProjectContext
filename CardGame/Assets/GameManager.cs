@@ -298,14 +298,34 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < cardsInHand.Count; i++)
             {
-                cardsInHand[i].transform.position = new Vector3(cardsInHandXPos[i], cardsInHand[i].transform.position.y, cardsInHand[i].transform.position.z);
+                Vector3 newPos = new Vector3(cardsInHandXPos[i], cardsInHand[i].transform.localPosition.y, cardsInHand[i].transform.localPosition.z);
+                cardsInHand[i].transform.localPosition = newPos;
+
+                if (cardsInHand[i].tag == "Minion")
+                {
+                    cardsInHand[i].GetComponent<minionController>().setNewPos(newPos);
+                }
+                else if (cardsInHand[i].tag == "Spell")
+                {
+                    cardsInHand[i].GetComponent<spellController>().setNewPos(newPos);
+                }
             }
         }
         else
         {
             for (int i = 0; i < cardsInOpponentHand.Count; i++)
             {
-                cardsInOpponentHand[i].transform.position = new Vector3(cardsInHandXPos[i], cardsInOpponentHand[i].transform.position.y, cardsInOpponentHand[i].transform.position.z);
+                Vector3 newPos = new Vector3(cardsInHandXPos[i], cardsInOpponentHand[i].transform.localPosition.y, cardsInOpponentHand[i].transform.localPosition.z);
+                cardsInOpponentHand[i].transform.localPosition = newPos;
+
+                if (cardsInOpponentHand[i].tag == "Minion")
+                {
+                    cardsInOpponentHand[i].GetComponent<minionController>().setNewPos(newPos);
+                }
+                else if (cardsInOpponentHand[i].tag == "Spell")
+                {
+                    cardsInOpponentHand[i].GetComponent<spellController>().setNewPos(newPos);
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ public class spellController : MonoBehaviour
     private Vector3 small = new Vector3(0.25f, 0.25f, 0.25f);
     private Vector3 big = new Vector3(0.5f, 0.5f, 0.5f);
 
-    private Vector3 startPos;
+    public Vector3 startPos;
     private Vector3 expandPos;
 
     public bool isOpponentCard = false;
@@ -32,15 +32,7 @@ public class spellController : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        startPos = this.transform.localPosition;
-        if (!isOpponentCard)
-        {
-            expandPos = new Vector3(startPos.x, startPos.y + 3, startPos.z);
-        }
-        else
-        {
-            expandPos = new Vector3(startPos.x, startPos.y - 3, startPos.z);
-        }
+        setNewPos(this.transform.localPosition);
     }
 
     // Update is called once per frame
@@ -56,6 +48,19 @@ public class spellController : MonoBehaviour
             }
             Vector2 mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = Vector2.Lerp(transform.position, mouseposition, 0.2f);
+        }
+    }
+
+    public void setNewPos(Vector3 pos)
+    {
+        startPos = pos;
+        if (!isOpponentCard)
+        {
+            expandPos = new Vector3(startPos.x, startPos.y + 3, startPos.z);
+        }
+        else
+        {
+            expandPos = new Vector3(startPos.x, startPos.y - 3, startPos.z);
         }
     }
 
@@ -147,6 +152,18 @@ public class spellController : MonoBehaviour
                 break;
             case Spell.Effect.Set_Question:
                 gameManager.setQuestion();
+                if (!isOpponentCard)
+                {
+                    gameManager.cardsInHand.Remove(this.gameObject);
+                    gameManager.amountOfCardsInHand--;
+                    gameManager.rearrangeCards(1);
+                }
+                if (isOpponentCard)
+                {
+                    gameManager.cardsInOpponentHand.Remove(this.gameObject);
+                    gameManager.opponentCardsInHand--;
+                    gameManager.rearrangeCards(2);
+                }
                 Destroy(this.gameObject);
                 break;
             case Spell.Effect.Take_Control:
