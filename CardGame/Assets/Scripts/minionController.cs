@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class minionController : MonoBehaviour
 {
 
-    private Vector3 small = new Vector3(0.25f, 0.25f, 0.25f);
+    private Vector3 small = new Vector3(0.2f, 0.2f, 0.2f);
     private Vector3 big = new Vector3(0.5f, 0.5f, 0.5f);
 
     private Vector3 startPos;
@@ -35,6 +35,7 @@ public class minionController : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         setNewPos(this.transform.localPosition);
+        this.transform.localScale = small;
     }
 
     // Update is called once per frame

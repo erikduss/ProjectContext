@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
     public List<BoardSpot> mainPlayerBoard = new List<BoardSpot>();
     public List<BoardSpot> opponentBoard = new List<BoardSpot>();
 
-    private List<int> minionXPos = new List<int> {-12, -8, -4, 0, 4, 8, 12 };
-    private List<int> cardsInHandXPos = new List<int> { -12, -8, -4, 0, 4, 8, 12 };
+    private List<float> minionXPos = new List<float> { -11, -8f, -5f, -2f, 1f, 4f, 7f };   //new List<int> {-12, -8, -4, 0, 4, 8, 12 };
+    private List<float> cardsInHandXPos = new List<float> { -11, -8f, -5f, -2f, 1f, 4f, 7f };
 
     private int startingCards = 3;
     public int amountOfCardsInHand = 0;
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         GameObject minionToSpawn = minionsToSpawnOnField.Find(x => x.name == minionName);
         Card minionData = minionsData.Find(x => x.objectName == minionName);
 
-        int minionX = minionXPos[listID];
+        float minionX = minionXPos[listID];
 
         alivePlayerMinions++;
         spawnedMinions++;
@@ -134,12 +134,14 @@ public class GameManager : MonoBehaviour
             GameObject minion = Instantiate(minionToSpawn, new Vector3(minionX, -2.5f, 0), Quaternion.identity); //Spawn minion
             aliveMinionsMainPlayer++;
             minion.transform.parent = playBoard.transform;
+            minion.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         }
         else
         {
             GameObject minion = Instantiate(minionToSpawn, new Vector3(minionX, -2.5f, 0), new Quaternion(0,0,0,0)); //Spawn minion
             aliveMinionsOpponent++;
             minion.transform.parent = playBoard.transform;
+            minion.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         } 
     }
 
@@ -232,14 +234,17 @@ public class GameManager : MonoBehaviour
         if (playerTurn == 1)
         {
             playerTurn = 2;
+            playerText.color = Color.green;
         }
         else
         {
             playerTurn = 1;
+            playerText.color = Color.magenta;
             if (currentTurn < maxMana) currentTurn++;
         }
 
-        playerText.text = "Turn: Player " + playerTurn;
+        playerText.text = "Player " + playerTurn;
+        
 
         drawCard(playerTurn);
         setTurn(currentTurn);
