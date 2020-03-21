@@ -30,6 +30,8 @@ public class minionController : MonoBehaviour
 
     private GameManager gameManager;
 
+    private bool dontInteract = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,14 +45,29 @@ public class minionController : MonoBehaviour
     {
         if (gameManager.pauseInteractions) return;
 
-        if (grabbedCard)
+        if (isOpponentCard && gameManager.playerTurn == 1)
         {
-            if (!madeBig)
+            dontInteract = true;
+            return;
+        }
+        else if (!isOpponentCard && gameManager.playerTurn == 2)
+        {
+            dontInteract = true;
+            return;
+        }
+        else
+        {
+            dontInteract = false;
+
+            if (grabbedCard)
             {
-                makeCardBig();
+                if (!madeBig)
+                {
+                    makeCardBig();
+                }
+                Vector2 mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                transform.position = Vector2.Lerp(transform.position, mouseposition, 0.2f);
             }
-            Vector2 mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = Vector2.Lerp(transform.position, mouseposition, 0.2f);
         }
     }
 
@@ -69,7 +86,7 @@ public class minionController : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (gameManager.pauseInteractions) return;
+        if (gameManager.pauseInteractions || dontInteract) return;
         if (grabbedCard) return;
         
         this.transform.localPosition = expandPos;
@@ -87,7 +104,7 @@ public class minionController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gameManager.pauseInteractions) return;
+        if (gameManager.pauseInteractions || dontInteract) return;
         if (!grabbedCard)
         {
             GrabCard();
@@ -107,9 +124,11 @@ public class minionController : MonoBehaviour
     {
         grabbedCard = false;
 
-        switch (thisCard.effect)
+        if (thisCard.manaCost <= gameManager.currentMana)
         {
-            case Card.Effect.Destroy_All_Minions:
+            switch (thisCard.effect)
+            {
+                case Card.Effect.Destroy_All_Minions:
                     if (!isOpponentCard && gameManager.aliveMinionsMainPlayer < gameManager.maxBoardSize)
                     {
                         gameManager.destroyAllMinions();
@@ -117,6 +136,7 @@ public class minionController : MonoBehaviour
                         gameManager.cardsInHand.Remove(this.gameObject);
                         gameManager.amountOfCardsInHand--;
                         gameManager.rearrangeCards(1);
+                        gameManager.reduceMana(thisCard.manaCost);
                         Destroy(this.gameObject);
                     }
                     else if (!isOpponentCard && gameManager.aliveMinionsOpponent < gameManager.maxBoardSize)
@@ -126,19 +146,21 @@ public class minionController : MonoBehaviour
                         gameManager.cardsInOpponentHand.Remove(this.gameObject);
                         gameManager.opponentCardsInHand--;
                         gameManager.rearrangeCards(2);
+                        gameManager.reduceMana(thisCard.manaCost);
                         Destroy(this.gameObject);
                     }
                     else
                     {
 
                     }
-                break;
-            case Card.Effect.Reduce_Question:
-                break;
-            case Card.Effect.Destroy:
-                break;
-            default:
-                break;
+                    break;
+                case Card.Effect.Reduce_Question:
+                    break;
+                case Card.Effect.Destroy:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

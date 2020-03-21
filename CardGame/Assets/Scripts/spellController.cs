@@ -28,6 +28,8 @@ public class spellController : MonoBehaviour
 
     private GameManager gameManager;
 
+    private bool dontInteract = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,15 +42,28 @@ public class spellController : MonoBehaviour
     void Update()
     {
         if (gameManager.pauseInteractions) return;
-
-        if (grabbedCard)
+        if (isOpponentCard && gameManager.playerTurn == 1)
         {
-            if (!madeBig)
+            dontInteract = true;
+            return;
+        }
+        else if (!isOpponentCard && gameManager.playerTurn == 2)
+        {
+            dontInteract = true;
+            return;
+        }
+        else
+        {
+            dontInteract = false;
+            if (grabbedCard)
             {
-                makeCardBig();
+                if (!madeBig)
+                {
+                    makeCardBig();
+                }
+                Vector2 mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                transform.position = Vector2.Lerp(transform.position, mouseposition, 0.2f);
             }
-            Vector2 mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = Vector2.Lerp(transform.position, mouseposition, 0.2f);
         }
     }
 
@@ -67,7 +82,7 @@ public class spellController : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (gameManager.pauseInteractions) return;
+        if (gameManager.pauseInteractions || dontInteract) return;
         if (grabbedCard) return;
         
         this.transform.localPosition = expandPos;
@@ -85,7 +100,7 @@ public class spellController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gameManager.pauseInteractions) return;
+        if (gameManager.pauseInteractions || dontInteract) return;
         if (!grabbedCard)
         {
             GrabCard();
@@ -105,9 +120,11 @@ public class spellController : MonoBehaviour
     {
         grabbedCard = false;
 
-        switch (thisSpell.effect)
+        if (thisSpell.manaCost <= gameManager.currentMana)
         {
-            case Spell.Effect.Summon:
+            switch (thisSpell.effect)
+            {
+                case Spell.Effect.Summon:
                     if (!isOpponentCard && gameManager.aliveMinionsMainPlayer < gameManager.maxBoardSize)
                     {
                         for (var i = 0; i < thisSpell.Value; i++)
@@ -120,9 +137,10 @@ public class spellController : MonoBehaviour
                         gameManager.cardsInHand.Remove(this.gameObject);
                         gameManager.amountOfCardsInHand--;
                         gameManager.rearrangeCards(1);
+                        gameManager.reduceMana(thisSpell.manaCost);
                         Destroy(this.gameObject);
                     }
-                    else if(isOpponentCard && gameManager.aliveMinionsOpponent < gameManager.maxBoardSize)
+                    else if (isOpponentCard && gameManager.aliveMinionsOpponent < gameManager.maxBoardSize)
                     {
                         for (var i = 0; i < thisSpell.Value; i++)
                         {
@@ -134,43 +152,46 @@ public class spellController : MonoBehaviour
                         gameManager.cardsInOpponentHand.Remove(this.gameObject);
                         gameManager.opponentCardsInHand--;
                         gameManager.rearrangeCards(2);
+                        gameManager.reduceMana(thisSpell.manaCost);
                         Destroy(this.gameObject);
                     }
                     else
                     {
 
                     }
-                break;
-            case Spell.Effect.Damage_All_Enemies:
-                break;
-            case Spell.Effect.Damage_Single:
-                break;
-            case Spell.Effect.Detroy_Minion:
-                break;
-            case Spell.Effect.Heal_Friendly:
-                break;
-            case Spell.Effect.Heal_Single:
-                break;
-            case Spell.Effect.Set_Question:
-                gameManager.setQuestion();
-                if (!isOpponentCard)
-                {
-                    gameManager.cardsInHand.Remove(this.gameObject);
-                    gameManager.amountOfCardsInHand--;
-                    gameManager.rearrangeCards(1);
-                }
-                if (isOpponentCard)
-                {
-                    gameManager.cardsInOpponentHand.Remove(this.gameObject);
-                    gameManager.opponentCardsInHand--;
-                    gameManager.rearrangeCards(2);
-                }
-                Destroy(this.gameObject);
-                break;
-            case Spell.Effect.Take_Control:
-                break;
-            default:
-                break;
+                    break;
+                case Spell.Effect.Damage_All_Enemies:
+                    break;
+                case Spell.Effect.Damage_Single:
+                    break;
+                case Spell.Effect.Detroy_Minion:
+                    break;
+                case Spell.Effect.Heal_Friendly:
+                    break;
+                case Spell.Effect.Heal_Single:
+                    break;
+                case Spell.Effect.Set_Question:
+                    gameManager.setQuestion();
+                    if (!isOpponentCard)
+                    {
+                        gameManager.cardsInHand.Remove(this.gameObject);
+                        gameManager.amountOfCardsInHand--;
+                        gameManager.rearrangeCards(1);
+                    }
+                    if (isOpponentCard)
+                    {
+                        gameManager.cardsInOpponentHand.Remove(this.gameObject);
+                        gameManager.opponentCardsInHand--;
+                        gameManager.rearrangeCards(2);
+                    }
+                    gameManager.reduceMana(thisSpell.manaCost);
+                    Destroy(this.gameObject);
+                    break;
+                case Spell.Effect.Take_Control:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

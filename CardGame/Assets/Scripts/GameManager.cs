@@ -16,12 +16,27 @@ public class GameManager : MonoBehaviour
     public GameObject questionCreationPanel;
     public Button btn_submitQuestion;
 
-    private Question mainPlayerQuestion = new Question();
+    private int amountOfAskedQuestions = 0;
 
-    public Text question;
-    public Text fake_answer_1;
-    public Text fake_answer_2;
-    public Text correct_answer;
+    private List<Question> askedQuestions = new List<Question>();
+
+    public InputField question;
+    public InputField fake_answer_1;
+    public InputField fake_answer_2;
+    public InputField correct_answer;
+
+    public GameObject questionPanel;
+    public Button btn_submitAnswer;
+
+    public Text askedQuestion;
+    public Text answerField_1;
+    public Text answerField_2;
+    public Text answerField_3;
+
+    private int currentQuestionID = 0;
+
+    public int mainPlayerActiveQuestions = 0;
+    public int opponentActiveQuestions = 0;
 
     public Text errorMessage;
 
@@ -52,21 +67,25 @@ public class GameManager : MonoBehaviour
 
     public bool pauseInteractions = false;
 
-    private int currentMana = 0;
+    public int currentMana = 0;
     private int maxManaThisTurn = 0;
     private int currentTurn = 0;
     private int maxMana = 10;
 
-    public Text manaText;
-    public Text cardsText;
-    public Text playerText;
+    public TextMesh manaText;
+    public TextMesh cardsText;
+    public TextMesh playerText;
 
-    private int playerTurn = 1;
+    public int playerTurn = 1;
+
+    public GameObject cardHider;
+    private List<GameObject> cardHiders = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         questionCreationPanel.SetActive(false);
+        questionPanel.SetActive(false);
         btn_submitQuestion.onClick.AddListener(submitQuestion);
         for(int i = 0; i< maxBoardSize; i++)
         {
@@ -85,6 +104,8 @@ public class GameManager : MonoBehaviour
         }
         setTurn(1);
         cardsText.text = "Cards left: " + playableCards.Count;
+
+        setCardCovers(1);
     }
 
     // Update is called once per frame
@@ -184,16 +205,168 @@ public class GameManager : MonoBehaviour
         questionCreationPanel.SetActive(true);
     }
 
+    private void checkQuestions()
+    {
+        mainPlayerActiveQuestions = 0;
+        opponentActiveQuestions = 0;
+
+        foreach(Question item in askedQuestions)
+        {
+            if(item.answered == false)
+            {
+                if (item.questionFromPlayer == 1)
+                {
+                    mainPlayerActiveQuestions++;
+                }
+                else opponentActiveQuestions++;
+            }
+        }
+    }
+
+    public void showQuestion()
+    {
+        
+        Question questionToSet = null;
+        bool setQuestionActive = false;
+
+        if (playerTurn == 1 && opponentActiveQuestions > 0)
+        {
+            questionToSet = askedQuestions.Find(x => !x.answered && x.questionFromPlayer != playerTurn);
+            setQuestionActive = true;
+        }
+        else if (playerTurn == 2 && mainPlayerActiveQuestions > 0)
+        {
+            questionToSet = askedQuestions.Find(x => !x.answered && x.questionFromPlayer != playerTurn);
+            setQuestionActive = true;
+        }
+
+        if (setQuestionActive && questionToSet != null)
+        {
+            askedQuestion.text = questionToSet.question;
+            currentQuestionID = questionToSet.questionID;
+
+            switch (Random.Range(1,4))
+            {
+                case 1:
+                    answerField_1.text = questionToSet.correctAnswer;
+
+                    int firstWrongPos = Random.Range(1, 3); //low is first, higher is end (pos 2 and 3 in this case)
+                    if(firstWrongPos == 1)
+                    {
+                        answerField_2.text = questionToSet.fakeAnswer_1;
+                        answerField_3.text = questionToSet.fakeAnswer_2;
+                    }
+                    else
+                    {
+                        answerField_2.text = questionToSet.fakeAnswer_2;
+                        answerField_3.text = questionToSet.fakeAnswer_1;
+                    }
+                    break;
+                case 2:
+                    answerField_2.text = questionToSet.correctAnswer;
+
+                    int firstWrongPos_1 = Random.Range(1, 3); //low is first, higher is end (pos 1 and 3 in this case)
+                    if (firstWrongPos_1 == 1)
+                    {
+                        answerField_1.text = questionToSet.fakeAnswer_1;
+                        answerField_3.text = questionToSet.fakeAnswer_2;
+                    }
+                    else
+                    {
+                        answerField_1.text = questionToSet.fakeAnswer_2;
+                        answerField_3.text = questionToSet.fakeAnswer_1;
+                    }
+                    break;
+                case 3:
+                    answerField_3.text = questionToSet.correctAnswer;
+
+                    int firstWrongPos_2 = Random.Range(1, 3); //low is first, higher is end (pos 2 and 3 in this case)
+                    if (firstWrongPos_2 == 1)
+                    {
+                        answerField_1.text = questionToSet.fakeAnswer_1;
+                        answerField_2.text = questionToSet.fakeAnswer_2;
+                    }
+                    else
+                    {
+                        answerField_1.text = questionToSet.fakeAnswer_2;
+                        answerField_2.text = questionToSet.fakeAnswer_1;
+                    }
+                    break;
+            }
+            pauseInteractions = true;
+            questionPanel.SetActive(true);
+        }
+    }
+
+    public void answerQuestion(int selection)
+    {
+        Question currentQuestion = askedQuestions.Find(x => !x.answered && x.questionID == currentQuestionID);
+
+        switch (selection)
+        {
+            case 1:
+                if(answerField_1.text == currentQuestion.correctAnswer)
+                {
+                    currentQuestion.answered = true;
+                    Debug.Log("Correct");
+                }
+                else
+                {
+                    currentQuestion.attemptsMade++;
+                }
+                break;
+            case 2:
+                if (answerField_2.text == currentQuestion.correctAnswer)
+                {
+                    currentQuestion.answered = true;
+                    Debug.Log("Correct");
+                }
+                else
+                {
+                    currentQuestion.attemptsMade++;
+                }
+                break;
+            case 3:
+                if (answerField_3.text == currentQuestion.correctAnswer)
+                {
+                    currentQuestion.answered = true;
+                    Debug.Log("Correct");
+                }
+                else
+                {
+                    currentQuestion.attemptsMade++;
+                }
+                break;
+        }
+        questionPanel.SetActive(false);
+        pauseInteractions = false;
+    }
+
     public void submitQuestion()
     {
         if(question.text.Length > 0 && fake_answer_1.text.Length > 0 && fake_answer_2.text.Length > 0 && correct_answer.text.Length > 0)
         {
             pauseInteractions = false;
-            mainPlayerQuestion.question = question.text;
-            mainPlayerQuestion.fakeAnswer_1 = fake_answer_1.text;
-            mainPlayerQuestion.fakeAnswer_2 = fake_answer_2.text;
-            mainPlayerQuestion.correctAnswer = correct_answer.text;
+            amountOfAskedQuestions++;
+            askedQuestions.Add(new Question
+            {
+                questionID = amountOfAskedQuestions,
+                question = question.text,
+                fakeAnswer_1 = fake_answer_1.text,
+                fakeAnswer_2 = fake_answer_2.text,
+                correctAnswer = correct_answer.text,
+                questionFromPlayer = playerTurn
+            });
+
+            question.text = string.Empty;
+            fake_answer_1.text = string.Empty;
+            fake_answer_2.text = string.Empty;
+            correct_answer.text = string.Empty;
+
             questionCreationPanel.SetActive(false);
+
+            if (playerTurn == 1) mainPlayerActiveQuestions++;
+            else opponentActiveQuestions++;
         }
         else
         {
@@ -252,6 +425,10 @@ public class GameManager : MonoBehaviour
         int rotation = 0;
         if (playBoard.transform.rotation.x == 0) rotation = 180;
         playBoard.transform.rotation = new Quaternion(rotation, 0, 0, 0);
+
+        setCardCovers(playerTurn);
+
+        showQuestion();
     }
 
     public void drawCard(int player)
@@ -333,5 +510,43 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void setCardCovers(int playerTurn)
+    {
+        for(int i = 0; i < cardHiders.Count; i++)
+        {
+            Destroy(cardHiders[i].gameObject);
+        }
+        cardHiders.Clear();
+
+        if (playerTurn == 1)
+        {
+            for (int i = 0; i < cardsInOpponentHand.Count; i++)
+            {
+                Vector3 newPos = new Vector3(cardsInHandXPos[i], cardsInOpponentHand[i].transform.localPosition.y, cardsInOpponentHand[i].transform.localPosition.z);
+
+                GameObject tempHider = Instantiate(cardHider, new Vector3(cardsInHandXPos[i], 7.5f, 0), new Quaternion(0, 0, 0, 0)); //Spawn hider
+
+                cardHiders.Add(tempHider);
+            }
+        }
+        else if(playerTurn == 2)
+        {
+            for (int i = 0; i < cardsInHand.Count; i++)
+            {
+                Vector3 newPos = new Vector3(cardsInHandXPos[i], cardsInHand[i].transform.localPosition.y, cardsInHand[i].transform.localPosition.z);
+
+                GameObject tempHider = Instantiate(cardHider, new Vector3(cardsInHandXPos[i], 7.5f, 0), new Quaternion(0, 0, 0, 0)); //Spawn hider
+
+                cardHiders.Add(tempHider);
+            }
+        }
+    }
+
+    public void reduceMana(int amount)
+    {
+        currentMana -= amount;
+        manaText.text = "Mana: " + currentMana + "/" + maxManaThisTurn;
     }
 }
