@@ -504,6 +504,7 @@ MonoBehaviour:
   - {fileID: 2399626889094309459, guid: 1ef1709fe854f8e4cb76ce7a46c7a0d2, type: 3}
   - {fileID: 1994571725446704597, guid: eab18e00b6faee144bced334ec012566, type: 3}
   - {fileID: 7862290952207580221, guid: 26cb4f1319282cc4a802daeda9ddc82b, type: 3}
+  - {fileID: 6190856597313361622, guid: e7e9506d1521cb242b5b9afc5072547e, type: 3}
   questionCreationPanel: {fileID: 1967055666}
   btn_submitQuestion: {fileID: 743784255}
   question: {fileID: 26117203}
@@ -536,6 +537,7 @@ MonoBehaviour:
   playerTurn: 1
   cardHider: {fileID: 3168682611526086306, guid: f397843f4d1eaab42a2b312f59d31958,
     type: 3}
+  healthText: {fileID: 494827473}
 --- !u!4 &59334692
 Transform:
   m_ObjectHideFlags: 0
@@ -1528,7 +1530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.42, y: 1.25}
+  m_AnchoredPosition: {x: -0, y: 0.15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!210 &494827472
@@ -1552,10 +1554,10 @@ TextMesh:
   m_GameObject: {fileID: 494827470}
   m_Text: 5
   m_OffsetZ: 0
-  m_CharacterSize: 0.2
+  m_CharacterSize: 0.15
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 0
   m_FontStyle: 0

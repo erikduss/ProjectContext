@@ -13,7 +13,7 @@ public class Spell : ScriptableObject {
 
 	public int manaCost;
 
-    public enum Effect { Summon, Damage_Single, Damage_All_Enemies, Heal_Single, Heal_Friendly, Set_Question, Take_Control, Detroy_Minion }
+    public enum Effect { Summon, Damage_Single, Damage_All_Enemies, Heal_Single, Heal_Friendly, Set_Question, Take_Control, Detroy_Minion, Destroy_All_Minions }
 
     public Effect effect;
 

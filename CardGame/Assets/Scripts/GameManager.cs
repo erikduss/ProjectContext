@@ -81,6 +81,9 @@ public class GameManager : MonoBehaviour
     public GameObject cardHider;
     private List<GameObject> cardHiders = new List<GameObject>();
 
+    private int health = 3;
+    public TextMesh healthText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +107,7 @@ public class GameManager : MonoBehaviour
         }
         setTurn(1);
         cardsText.text = "Cards left: " + playableCards.Count;
+        healthText.text = health.ToString();
 
         setCardCovers(1);
     }
@@ -190,8 +194,11 @@ public class GameManager : MonoBehaviour
         {
             //Destroy(minion);
             minion.GetComponent<minionBehavior>().health = 0;
+            health++;
             //activeMinions.Remove(minion);
         }
+
+        healthText.text = health.ToString();
 
         activeMinions.Clear();
         alivePlayerMinions = 0;
@@ -203,6 +210,62 @@ public class GameManager : MonoBehaviour
     {
         pauseInteractions = true;
         questionCreationPanel.SetActive(true);
+    }
+
+    public void destroyRandomMinion(int player)
+    {
+        List<BoardSpot> mainList = new List<BoardSpot>();
+        List<BoardSpot> oppentList = new List<BoardSpot>();
+
+        foreach (BoardSpot spot in mainPlayerBoard)
+        {
+            if (spot.Occupied)
+            {
+                mainList.Add(spot);
+            }
+        }
+        foreach (BoardSpot spot in opponentBoard)
+        {
+            if (spot.Occupied)
+            {
+                oppentList.Add(spot);
+            }
+        }
+
+        int minionIDToKill = 0;
+
+        List<GameObject> minionsToKill = new List<GameObject>();
+        minionsToKill.AddRange(GameObject.FindGameObjectsWithTag("PlayedMinion"));
+
+        if (player == 1)
+        {
+            minionIDToKill = Random.Range(0, mainList.Count);
+
+            mainList[minionIDToKill].killMinion();
+            GameObject minion = minionsToKill[minionIDToKill];
+            int minionID = minion.GetComponent<minionBehavior>().minionID;
+            minion.GetComponent<minionBehavior>().health = 0;
+            activeMinions.Remove(minion);
+            health++;
+            aliveMinionsMainPlayer--;
+        }
+
+        if (player == 2)
+        {
+            minionIDToKill = Random.Range(0, oppentList.Count);
+
+            oppentList[minionIDToKill].killMinion();
+            GameObject minion = minionsToKill[minionIDToKill];
+            minion.GetComponent<minionBehavior>().health = 0;
+            activeMinions.Remove(minion);
+            health++;
+            aliveMinionsOpponent--;
+        }
+
+        healthText.text = health.ToString();
+
+        alivePlayerMinions--;
+        
     }
 
     private void checkQuestions()
@@ -313,6 +376,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     currentQuestion.attemptsMade++;
+                    health--;
                 }
                 break;
             case 2:
@@ -324,6 +388,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     currentQuestion.attemptsMade++;
+                    health--;
                 }
                 break;
             case 3:
@@ -335,9 +400,11 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     currentQuestion.attemptsMade++;
+                    health--;
                 }
                 break;
         }
+        healthText.text = health.ToString();
         questionPanel.SetActive(false);
         pauseInteractions = false;
     }

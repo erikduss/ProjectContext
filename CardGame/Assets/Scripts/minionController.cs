@@ -139,7 +139,7 @@ public class minionController : MonoBehaviour
                         gameManager.reduceMana(thisCard.manaCost);
                         Destroy(this.gameObject);
                     }
-                    else if (!isOpponentCard && gameManager.aliveMinionsOpponent < gameManager.maxBoardSize)
+                    else if (isOpponentCard && gameManager.aliveMinionsOpponent < gameManager.maxBoardSize)
                     {
                         gameManager.destroyAllMinions();
                         gameManager.SummonMinion("Inner_Demon");

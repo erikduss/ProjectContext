@@ -165,6 +165,22 @@ public class spellController : MonoBehaviour
                 case Spell.Effect.Damage_Single:
                     break;
                 case Spell.Effect.Detroy_Minion:
+                    if (!isOpponentCard && gameManager.aliveMinionsOpponent > 1)
+                    {
+                        gameManager.destroyRandomMinion(2);
+                        gameManager.cardsInHand.Remove(this.gameObject);
+                        gameManager.amountOfCardsInHand--;
+                        gameManager.rearrangeCards(1);
+                    }
+                    if (isOpponentCard && gameManager.aliveMinionsMainPlayer > 1)
+                    {
+                        gameManager.destroyRandomMinion(1);
+                        gameManager.cardsInOpponentHand.Remove(this.gameObject);
+                        gameManager.opponentCardsInHand--;
+                        gameManager.rearrangeCards(2);
+                    }
+                    gameManager.reduceMana(thisSpell.manaCost);
+                    Destroy(this.gameObject);
                     break;
                 case Spell.Effect.Heal_Friendly:
                     break;
@@ -188,6 +204,26 @@ public class spellController : MonoBehaviour
                     Destroy(this.gameObject);
                     break;
                 case Spell.Effect.Take_Control:
+                    break;
+                case Spell.Effect.Destroy_All_Minions:
+                    if (!isOpponentCard)
+                    {
+                        gameManager.destroyAllMinions();
+                        gameManager.cardsInHand.Remove(this.gameObject);
+                        gameManager.amountOfCardsInHand--;
+                        gameManager.rearrangeCards(1);
+                        gameManager.reduceMana(thisSpell.manaCost);
+                        Destroy(this.gameObject);
+                    }
+                    else if (isOpponentCard)
+                    {
+                        gameManager.destroyAllMinions();
+                        gameManager.cardsInOpponentHand.Remove(this.gameObject);
+                        gameManager.opponentCardsInHand--;
+                        gameManager.rearrangeCards(2);
+                        gameManager.reduceMana(thisSpell.manaCost);
+                        Destroy(this.gameObject);
+                    }
                     break;
                 default:
                     break;

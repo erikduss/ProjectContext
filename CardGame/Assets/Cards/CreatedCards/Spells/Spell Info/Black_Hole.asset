@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7418fe6a2e1ac364fb37a49d3533cdc0, type: 3}
-  m_Name: Thunder_Bolt
+  m_Name: Black_Hole
   m_EditorClassIdentifier: 
-  name: Thunder Bolt
-  description: Destroy a random enemy minion
-  artwork: {fileID: 21300000, guid: 24bbb778dbb21794f9890655acb74d9f, type: 3}
-  manaCost: 3
-  effect: 7
-  Value: 1
+  name: Black Hole
+  description: Destroy all minions
+  artwork: {fileID: 21300000, guid: 099ead17a3edf19449852a423ed91403, type: 3}
+  manaCost: 8
+  effect: 8
+  Value: 0
