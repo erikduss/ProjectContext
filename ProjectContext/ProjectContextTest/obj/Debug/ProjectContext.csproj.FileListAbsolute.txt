@@ -24,3 +24,6 @@ C:\Users\erikd\OneDrive\Documents\Git\Context_Project\ProjectContext\ProjectCont
 C:\Users\erikd\OneDrive\Documents\Git\Context_Project\ProjectContext\ProjectContextTest\obj\Debug\UC_Interst.baml
 C:\Users\erikd\OneDrive\Documents\Git\Context_Project\ProjectContext\ProjectContextTest\obj\Debug\LoginWindow.g.cs
 C:\Users\erikd\OneDrive\Documents\Git\Context_Project\ProjectContext\ProjectContextTest\obj\Debug\LoginWindow.baml
+C:\Users\erikd\OneDrive\Documents\Git\Context_Project\ProjectContext\ProjectContextTest\bin\Debug\WpfAnimatedGif.dll
+C:\Users\erikd\OneDrive\Documents\Git\Context_Project\ProjectContext\ProjectContextTest\bin\Debug\WpfAnimatedGif.xml
+C:\Users\erikd\OneDrive\Documents\Git\Context_Project\ProjectContext\ProjectContextTest\obj\Debug\ProjectContext.csproj.CopyComplete

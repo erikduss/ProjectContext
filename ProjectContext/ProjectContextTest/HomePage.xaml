@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectContextTest"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Title="HomePage" Height="1080" Width="1920" WindowState="Maximized" WindowStyle="None">
 
@@ -25,6 +26,8 @@
 
         <Image Grid.Row="0" Grid.Column="1" Source="pack://application:,,,/Resources/Logo.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="818" Height="343" Stretch="Fill" Panel.ZIndex="1"/>
 
+        <Image Grid.Row="1" Grid.Column="1" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resources/World-Globe.gif" />
+        
         <Button x:Name="btn_startGame" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625" Height="219" Click="btn_startGame_Click" BorderThickness="0">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="pack://application:,,,/Resources/Quick_Match.png"/>
