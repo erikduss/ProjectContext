@@ -10,33 +10,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ProjectContextTest
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        public MainWindow()
+        public LoginWindow()
         {
             InitializeComponent();
         }
 
-        private void btn_Create_Click(object sender, RoutedEventArgs e)
-        {
-            CreateProfile profileWindow = new CreateProfile();
-            profileWindow.Show();
-            this.Close();
-        }
-
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
-            this.Close();
+            if(txt_Name.Text.Length > 1 || txt_Pass.Password.Length > 1)
+            {
+                HomePage home = new HomePage();
+                home.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please enter your name and password");
+            }
         }
     }
 }

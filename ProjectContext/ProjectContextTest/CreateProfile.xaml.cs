@@ -39,9 +39,9 @@ namespace ProjectContextTest
 
         private void btn_Create_Click(object sender, RoutedEventArgs e)
         {
-            if(txt_Age.Text.Length < 1 || txt_Name.Text.Length < 1 || cbox_Gender.Text.Length < 1 || cbox_Role.Text.Length < 1)
+            if(txt_Age.Text.Length < 1 || txt_Name.Text.Length < 1 || cbox_Gender.Text.Length < 1 || cbox_Role.Text.Length < 1 || txt_Pass.Password.Length < 1)
             {
-                MessageBox.Show("Please fill in your name, age, gender and role.");
+                MessageBox.Show("Please fill in your name, a password, age, gender and role.");
                 return;
             }
             if (stack_interests.Children.Count > 0)

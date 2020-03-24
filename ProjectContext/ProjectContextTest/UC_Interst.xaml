@@ -7,7 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="350">
     <Grid MaxWidth="350" HorizontalAlignment="Left">
-        <TextBox Name="txt_interest" FontSize="24" Height="50" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="300"/>
-        <Button Name="btn_Remove" Width="50" Height="50" Content="X" Margin="300,0,0,0" FontSize="24"/>
+        <TextBox Name="txt_interest" FontSize="24" Height="50" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="300" BorderThickness="0" Padding="10,0,0,0">
+        <TextBox.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Resources/InterestsTypebar.png"/>
+        </TextBox.Background>
+        </TextBox>
+        <Button Name="btn_Remove" Width="50" Height="50" Margin="300,0,0,0" FontSize="24" BorderThickness="0">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/delete.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/delete.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </UserControl>

@@ -5,55 +5,152 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectContextTest"
         mc:Ignorable="d"
-        Title="CreateProfile" Height="1080" Width="1920" Background="LightGray" WindowState="Maximized" WindowStyle="None" >
+        Title="CreateProfile" Height="1080" Width="1920" WindowState="Maximized" WindowStyle="None" >
+
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Resources/Background.png"/>
+    </Window.Background>
+
     <Grid Width="auto" Height="auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="8*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="3*" />
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Label Name="lbl_header" Content="Create" Grid.Row="0" FontSize="72" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-        <Label Name="lbl_required" Content=" *required" Grid.Row="0" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,150,0,0" Grid.ColumnSpan="2"/>
+        <Image Source="pack://application:,,,/Resources/Create_title.png" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="625"/>
 
-        <Label Name="lbl_Name" Content="*Name" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24"/>
-        <TextBox Name="txt_Name" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="50" FontSize="24" VerticalContentAlignment="Center" Background="#bdbdbd"/>
+        <Image Source="pack://application:,,,/Resources/Required.png" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,200,0,0" Grid.ColumnSpan="2" Width="204"/>
 
-        <Label Name="lbl_Age" Content="*Age" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24"/>
-        <TextBox Name="txt_Age" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="50" FontSize="24" VerticalContentAlignment="Center" Background="#bdbdbd"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Image Source="pack://application:,,,/Resources/Name_create.png"  Width="389" Height="68"/>
+            <TextBox Name="txt_Name" HorizontalAlignment="Left" VerticalAlignment="Center" Width="215" Height="57" Margin="-215,-10,0,0" FontSize="24" BorderThickness="0" VerticalContentAlignment="Center" Padding="10,0,0,0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                </TextBox.Background>
+            </TextBox>
+        </StackPanel>
 
-        <Label Name="lbl_Gender" Content="Gender" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24"/>
-        <ComboBox Name="cbox_Gender" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="50" FontSize="24" VerticalContentAlignment="Center" Background="#bdbdbd">
-            <ComboBoxItem Content="Male" Background="#bdbdbd"/>
-            <ComboBoxItem Content="Female" Background="#bdbdbd"/>
-            <ComboBoxItem Content="Trans Male" Background="#bdbdbd"/>
-            <ComboBoxItem Content="Trans Female" Background="#bdbdbd"/>
-            <ComboBoxItem Content="Other" Background="#bdbdbd"/>
-        </ComboBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Image Source="pack://application:,,,/Resources/Pass_create.png"  Width="389" Height="68"/>
+            <PasswordBox Name="txt_Pass" HorizontalAlignment="Left" VerticalAlignment="Center" Width="215" Height="57" Margin="-215,-10,0,0" FontSize="24" BorderThickness="0" VerticalContentAlignment="Center" Padding="10,0,0,0">
+                <PasswordBox.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+        </StackPanel>
 
-        <Label Name="lbl_Role" Content="Role" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24"/>
-        <ComboBox Name="cbox_Role" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="50" FontSize="24" VerticalContentAlignment="Center" Background="#bdbdbd">
-            <ComboBoxItem Content="Student" Background="#bdbdbd"/>
-            <ComboBoxItem Content="Teacher" Background="#bdbdbd"/>
-            <ComboBoxItem Content="Other" Background="#bdbdbd"/>
-        </ComboBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Image Source="pack://application:,,,/Resources/Age.png"  Width="389" Height="68"/>
+            <TextBox Name="txt_Age" HorizontalAlignment="Left" VerticalAlignment="Center" Width="215" Height="57" Margin="-215,-10,0,0" FontSize="24" BorderThickness="0" VerticalContentAlignment="Center" Padding="10,0,0,0">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                </TextBox.Background>
+            </TextBox>
+        </StackPanel>
 
-        <Label Name="lbl_Interests" Content="*Interests" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24"/>
-        <ScrollViewer Grid.Row="5" Grid.Column="1" MaxHeight="200" MaxWidth="370" HorizontalAlignment="Left">
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Image Source="pack://application:,,,/Resources/Gender.png"  Width="389" Height="68"/>
+            <ComboBox Name="cbox_Gender" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Width="215" Height="57" Margin="-215,-10,0,0" FontSize="24" BorderThickness="0" VerticalContentAlignment="Center" Padding="10,0,0,0">
+                <ComboBox.OpacityMask>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                </ComboBox.OpacityMask>
+                <ComboBox.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                </ComboBox.Background>
+                <ComboBoxItem Content="Male" Height="57" Width="215" BorderThickness="0" Padding="10,0,0,0">
+                    <ComboBoxItem.OpacityMask>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                    </ComboBoxItem.OpacityMask>
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Female" Height="57" Width="215" BorderThickness="0" Padding="10,0,0,0">
+                    <ComboBoxItem.OpacityMask>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                    </ComboBoxItem.OpacityMask>
+                    <ComboBoxItem.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Other" Height="57" Width="215" BorderThickness="0" Padding="10,0,0,0">
+                    <ComboBoxItem.OpacityMask>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                    </ComboBoxItem.OpacityMask>
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Image Source="pack://application:,,,/Resources/Role.png"  Width="389" Height="68"/>
+            <ComboBox Name="cbox_Role" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Width="215" Height="57" Margin="-215,-10,0,0" FontSize="24" BorderThickness="0" VerticalContentAlignment="Center" Padding="10,0,0,0">
+                <ComboBox.OpacityMask>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                </ComboBox.OpacityMask>
+                <ComboBox.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                </ComboBox.Background>
+                <ComboBoxItem Content="Student" Height="57" Width="215" BorderThickness="0" Padding="10,0,0,0">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Teacher" Height="57" Width="215" BorderThickness="0" Padding="10,0,0,0">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+                <ComboBoxItem Content="Other" Height="57" Width="215" BorderThickness="0" Padding="10,0,0,0">
+                    <ComboBoxItem.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/Type.png"/>
+                    </ComboBoxItem.Background>
+                </ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <Image Source="pack://application:,,,/Resources/Interests.png" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="389"/>
+        <ScrollViewer Grid.Row="6" Grid.Column="1" MaxHeight="200" MaxWidth="370" HorizontalAlignment="Left" Margin="0,60,0,0" VerticalScrollBarVisibility="Auto">
             <StackPanel Name="stack_interests">
                 <!--<TextBox FontSize="24" Height="50" VerticalContentAlignment="Center" Width="300" HorizontalAlignment="Left"/>-->
             </StackPanel>
         </ScrollViewer>
-        <Button Name="btn_AddInterest" Content="Add Interest" Grid.Column="1" Grid.Row="5" Width="100" Height="20" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn_AddInterest_Click"/>
-        <Button Name="btn_ClearEmpty" Content="Clear Empty" Grid.Column="1" Grid.Row="5" Width="100" Height="20" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="200,0,0,0" Click="btn_ClearEmpty_Click"/>
-        <Button Name="btn_Create" Content="Create Profile" Width="100" Height="60" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" Click="btn_Create_Click"/>
+        <Button Name="btn_AddInterest" Grid.Column="1" Grid.Row="7" Width="198" Height="62" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btn_AddInterest_Click" BorderThickness="0">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/Add.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/Add.png"/>
+            </Button.Background>
+        </Button>
+        <Button Name="btn_ClearEmpty" Grid.Column="1" Grid.Row="7" Width="198" Height="62" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="200,0,0,0" Click="btn_ClearEmpty_Click" BorderThickness="0">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/Clear.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Resources/Clear.png"/>
+        </Button.Background>
+        </Button>
+        <Button Name="btn_Create" Width="389" Height="65" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left" Click="btn_Create_Click" BorderThickness="0">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/Create_Profile.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/Create_Profile.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

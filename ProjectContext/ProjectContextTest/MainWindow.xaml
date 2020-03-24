@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectContextTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" Background="GreenYellow" WindowState="Maximized" WindowStyle="None">
+        Title="MainWindow" Height="1080" Width="1920" WindowState="Maximized" WindowStyle="None">
+
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Resources/Background.png"/>
+    </Window.Background>
+
     <Grid Width="auto" Height="auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -18,19 +23,33 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Column="0" Grid.Row="0" Fill="LightGray" Width="auto" Height="auto" />
-        <Rectangle Grid.Column="1" Grid.Row="0" Fill="LightGray" Width="auto" Height="auto" />
-        <Rectangle Grid.Column="2" Grid.Row="0" Fill="LightGray" Width="auto" Height="auto"/>
-        <Rectangle Grid.Column="0" Grid.Row="1" Fill="LightGray" Width="auto" Height="auto" />
-        <Rectangle Grid.Column="1" Grid.Row="1" Fill="LightGray" Width="auto" Height="auto" />
-        <Rectangle Grid.Column="2" Grid.Row="1" Fill="LightGray" Width="auto" Height="auto" />
-        <Rectangle Grid.Column="0" Grid.Row="2" Fill="LightGray" Width="auto" Height="auto" />
-        <Rectangle Grid.Column="1" Grid.Row="2" Fill="LightGray" Width="auto" Height="auto" />
-        <Rectangle Grid.Column="2" Grid.Row="2" Fill="LightGray" Width="auto" Height="auto" />
+        <Rectangle Grid.Column="0" Grid.Row="0" Width="auto" Height="auto" />
+        <Rectangle Grid.Column="1" Grid.Row="0" Width="auto" Height="auto" />
+        <Rectangle Grid.Column="2" Grid.Row="0" Width="auto" Height="auto"/>
+        <Rectangle Grid.Column="0" Grid.Row="1" Width="auto" Height="auto" />
+        <Rectangle Grid.Column="1" Grid.Row="1" Width="auto" Height="auto" />
+        <Rectangle Grid.Column="2" Grid.Row="1" Width="auto" Height="auto" />
+        <Rectangle Grid.Column="0" Grid.Row="2" Width="auto" Height="auto" />
+        <Rectangle Grid.Column="1" Grid.Row="2" Width="auto" Height="auto" />
+        <Rectangle Grid.Column="2" Grid.Row="2" Width="auto" Height="auto" />
 
-        <Label Name="lbl_Title" Content="MeetHUb" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="72"/>
+        <Image Grid.Row="0" Grid.Column="1" Source="pack://application:,,,/Resources/Logo.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="818" Height="343" Stretch="Fill" Panel.ZIndex="1"/>
 
-        <Button Name="btn_Create" Content="Create" Width="150" Height="60" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btn_Create_Click"/>
-        <Button Name="btn_Login" Content="Login" Width="150" Height="60" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="btn_Login_Click"/>
+        <Button Name="btn_Create" Width="404" Height="120" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btn_Create_Click" BorderThickness="0">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/Create.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/Create.png"/>
+            </Button.Background>
+        </Button>
+        <Button Name="btn_Login" Width="404" Height="120" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btn_Login_Click" BorderThickness="0" Opacity="0.97">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/LogIn_home.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/LogIn_home.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

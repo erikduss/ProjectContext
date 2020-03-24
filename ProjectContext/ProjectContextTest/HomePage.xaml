@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectContextTest"
         mc:Ignorable="d"
-        Title="HomePage" Height="1080" Width="1920" Background="LightGray" WindowState="Maximized" WindowStyle="None">
+        Title="HomePage" Height="1080" Width="1920" WindowState="Maximized" WindowStyle="None">
+
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Resources/Background.png"/>
+    </Window.Background>
+
     <Grid Width="auto" Height="auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -14,12 +19,20 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
+        <Image Grid.Row="0" Grid.Column="1" Source="pack://application:,,,/Resources/Logo.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="818" Height="343" Stretch="Fill" Panel.ZIndex="1"/>
 
-        <Button x:Name="btn_startGame" Grid.Column="1" Grid.Row="1" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="183" Height="79" Click="btn_startGame_Click"/>
+        <Button x:Name="btn_startGame" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625" Height="219" Click="btn_startGame_Click" BorderThickness="0">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/Quick_Match.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Resources/Quick_Match.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

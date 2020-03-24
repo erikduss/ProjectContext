@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectContextTest"
         mc:Ignorable="d"
-        Title="SplashScreen" Height="1080" Width="1920" Background="GreenYellow" WindowState="Maximized" WindowStyle="None" KeyDown="Window_KeyDown">
+        Title="SplashScreen" Height="1080" Width="1920" WindowState="Maximized" WindowStyle="None" KeyDown="Window_KeyDown">
+    
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Resources/Background.png"/>
+    </Window.Background>
+
     <Grid Width="auto" Height="auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
