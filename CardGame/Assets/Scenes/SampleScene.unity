@@ -505,6 +505,18 @@ MonoBehaviour:
   - {fileID: 1994571725446704597, guid: eab18e00b6faee144bced334ec012566, type: 3}
   - {fileID: 7862290952207580221, guid: 26cb4f1319282cc4a802daeda9ddc82b, type: 3}
   - {fileID: 6190856597313361622, guid: e7e9506d1521cb242b5b9afc5072547e, type: 3}
+  opponentDeck:
+  - {fileID: 8206550195690628108, guid: 4e56736ad4e1f174da1bc5ea4b67f6ba, type: 3}
+  - {fileID: 379848571585154888, guid: a93961308a7947546907225aa08d6100, type: 3}
+  - {fileID: 6190856597313361622, guid: e7e9506d1521cb242b5b9afc5072547e, type: 3}
+  - {fileID: 4322718767055606001, guid: 30829ae0fb545ad40ac1945f85cba8e4, type: 3}
+  - {fileID: 935526749601847100, guid: b0bcfc8063c0a5f4ab3fd442170c05b1, type: 3}
+  - {fileID: 1994571725446704597, guid: eab18e00b6faee144bced334ec012566, type: 3}
+  - {fileID: 7078017394645600354, guid: 34a5e9a380f9fde4490048b72f753fd1, type: 3}
+  - {fileID: 4067031668863957350, guid: cdd9f85df53a28043993539080d1b9ce, type: 3}
+  - {fileID: 2399626889094309459, guid: 1ef1709fe854f8e4cb76ce7a46c7a0d2, type: 3}
+  - {fileID: 7862290952207580221, guid: 26cb4f1319282cc4a802daeda9ddc82b, type: 3}
+  - {fileID: 6413046054740613146, guid: dcf2e45f808cab146b59ba02054c591e, type: 3}
   questionCreationPanel: {fileID: 1967055666}
   btn_submitQuestion: {fileID: 743784255}
   question: {fileID: 26117203}
@@ -538,6 +550,8 @@ MonoBehaviour:
   cardHider: {fileID: 3168682611526086306, guid: f397843f4d1eaab42a2b312f59d31958,
     type: 3}
   healthText: {fileID: 494827473}
+  amountOfFalseAnswersMain: 2
+  amountOfFalseAnswersOpponent: 2
 --- !u!4 &59334692
 Transform:
   m_ObjectHideFlags: 0

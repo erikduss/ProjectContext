@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Thunder_Bolt
   m_EditorClassIdentifier: 
   name: Thunder Bolt
-  description: Destroy a random enemy minion
+  description: Destroy 2 random enemy minions
   artwork: {fileID: 21300000, guid: 24bbb778dbb21794f9890655acb74d9f, type: 3}
-  manaCost: 3
-  effect: 7
-  Value: 1
+  manaCost: 4
+  effect: 2
+  Value: 2

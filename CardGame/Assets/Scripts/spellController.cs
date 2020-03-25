@@ -160,31 +160,29 @@ public class spellController : MonoBehaviour
 
                     }
                     break;
-                case Spell.Effect.Damage_All_Enemies:
-                    break;
-                case Spell.Effect.Damage_Single:
-                    break;
                 case Spell.Effect.Detroy_Minion:
-                    if (!isOpponentCard && gameManager.aliveMinionsOpponent > 1)
+                    if (!isOpponentCard && gameManager.aliveMinionsOpponent > 0)
                     {
-                        gameManager.destroyRandomMinion(2);
+                        for(int i = 0; i < thisSpell.Value; i++)
+                        {
+                            if(gameManager.aliveMinionsOpponent > 0) gameManager.destroyRandomMinion(2);                          
+                        }
                         gameManager.cardsInHand.Remove(this.gameObject);
                         gameManager.amountOfCardsInHand--;
                         gameManager.rearrangeCards(1);
                     }
-                    if (isOpponentCard && gameManager.aliveMinionsMainPlayer > 1)
+                    if (isOpponentCard && gameManager.aliveMinionsMainPlayer > 0)
                     {
-                        gameManager.destroyRandomMinion(1);
+                        for (int i = 0; i < thisSpell.Value; i++)
+                        {
+                            if(gameManager.aliveMinionsMainPlayer > 0) gameManager.destroyRandomMinion(1);
+                        }
                         gameManager.cardsInOpponentHand.Remove(this.gameObject);
                         gameManager.opponentCardsInHand--;
                         gameManager.rearrangeCards(2);
                     }
                     gameManager.reduceMana(thisSpell.manaCost);
                     Destroy(this.gameObject);
-                    break;
-                case Spell.Effect.Heal_Friendly:
-                    break;
-                case Spell.Effect.Heal_Single:
                     break;
                 case Spell.Effect.Set_Question:
                     gameManager.setQuestion();
@@ -203,7 +201,22 @@ public class spellController : MonoBehaviour
                     gameManager.reduceMana(thisSpell.manaCost);
                     Destroy(this.gameObject);
                     break;
-                case Spell.Effect.Take_Control:
+                case Spell.Effect.Reduce_Fake_Answers:
+                    if (!isOpponentCard)
+                    {
+                        gameManager.cardsInHand.Remove(this.gameObject);
+                        gameManager.amountOfCardsInHand--;
+                        gameManager.rearrangeCards(1);
+                    }
+                    if (isOpponentCard)
+                    {
+                        gameManager.cardsInOpponentHand.Remove(this.gameObject);
+                        gameManager.opponentCardsInHand--;
+                        gameManager.rearrangeCards(2);
+                    }
+                    gameManager.reduceFalseAnswers(thisSpell.Value);
+                    gameManager.reduceMana(thisSpell.manaCost);
+                    Destroy(this.gameObject);
                     break;
                 case Spell.Effect.Destroy_All_Minions:
                     if (!isOpponentCard)

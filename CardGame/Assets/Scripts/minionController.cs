@@ -155,6 +155,21 @@ public class minionController : MonoBehaviour
                     }
                     break;
                 case Card.Effect.Reduce_Question:
+                    if (!isOpponentCard)
+                    {
+                        gameManager.cardsInHand.Remove(this.gameObject);
+                        gameManager.amountOfCardsInHand--;
+                        gameManager.rearrangeCards(1);
+                    }
+                    if (isOpponentCard)
+                    {
+                        gameManager.cardsInOpponentHand.Remove(this.gameObject);
+                        gameManager.opponentCardsInHand--;
+                        gameManager.rearrangeCards(2);
+                    }
+                    gameManager.reduceFalseAnswers(thisCard.Value);
+                    gameManager.reduceMana(thisCard.manaCost);
+                    Destroy(this.gameObject);
                     break;
                 case Card.Effect.Destroy:
                     break;

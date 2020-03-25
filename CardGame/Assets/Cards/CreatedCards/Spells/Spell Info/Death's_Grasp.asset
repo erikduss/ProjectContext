@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Death's Grasp
   description: Destroy a minion
   artwork: {fileID: 21300000, guid: 75b61876d706ac44cae5eb9ad10f7a1c, type: 3}
-  manaCost: 5
-  effect: 7
-  Value: 0
+  manaCost: 2
+  effect: 2
+  Value: 1

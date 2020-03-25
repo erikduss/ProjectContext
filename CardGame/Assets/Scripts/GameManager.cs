@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public List<Card> minionsData;
 
     public List<GameObject> playableCards;
-    private List<GameObject> opponentDeck;
+    public List<GameObject> opponentDeck;
 
     public GameObject questionCreationPanel;
     public Button btn_submitQuestion;
@@ -84,6 +84,9 @@ public class GameManager : MonoBehaviour
     private int health = 3;
     public TextMesh healthText;
 
+    public int amountOfFalseAnswersMain = 2;
+    public int amountOfFalseAnswersOpponent = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,8 +99,6 @@ public class GameManager : MonoBehaviour
             opponentBoard.Add(new BoardSpot(i));
         }
 
-        opponentDeck = new List<GameObject>(playableCards);
-
         List<int> alreadyPickedCards = new List<int>();
 
         for(int i = 0; i<= startingCards; i++)
@@ -106,7 +107,6 @@ public class GameManager : MonoBehaviour
             drawCard(2);
         }
         setTurn(1);
-        cardsText.text = "Cards left: " + playableCards.Count;
         healthText.text = health.ToString();
 
         setCardCovers(1);
@@ -307,6 +307,19 @@ public class GameManager : MonoBehaviour
         {
             askedQuestion.text = questionToSet.question;
             currentQuestionID = questionToSet.questionID;
+            int amountOfFalse = 2;
+            if(playerTurn == 1)
+            {
+                amountOfFalse = amountOfFalseAnswersMain;
+            }
+            else
+            {
+                amountOfFalse = amountOfFalseAnswersOpponent;
+            }
+
+            answerField_1.enabled = true;
+            answerField_2.enabled = true;
+            answerField_3.enabled = true;
 
             switch (Random.Range(1,4))
             {
@@ -316,13 +329,47 @@ public class GameManager : MonoBehaviour
                     int firstWrongPos = Random.Range(1, 3); //low is first, higher is end (pos 2 and 3 in this case)
                     if(firstWrongPos == 1)
                     {
-                        answerField_2.text = questionToSet.fakeAnswer_1;
-                        answerField_3.text = questionToSet.fakeAnswer_2;
+                            if(amountOfFalse == 1)
+                            {
+                                answerField_2.text = questionToSet.fakeAnswer_1;
+                                answerField_3.enabled = false;
+                                //answerField_3.text = string.Empty;
+                                
+                            }
+                            else if(amountOfFalse == 2)
+                            {
+                                answerField_2.text = questionToSet.fakeAnswer_1;
+                                answerField_3.text = questionToSet.fakeAnswer_2;
+                            }
+                            else
+                            {
+                                answerField_2.text = string.Empty;
+                            //answerField_3.text = string.Empty;
+                            answerField_2.enabled = false;
+                            answerField_3.enabled = false;
+                        }                   
                     }
                     else
                     {
-                        answerField_2.text = questionToSet.fakeAnswer_2;
-                        answerField_3.text = questionToSet.fakeAnswer_1;
+                        if (amountOfFalse == 1)
+                        {
+                            answerField_2.text = questionToSet.fakeAnswer_2;
+                            //answerField_3.text = string.Empty;
+                            answerField_3.enabled = false;
+
+                        }
+                        else if (amountOfFalse == 2)
+                        {
+                            answerField_2.text = questionToSet.fakeAnswer_2;
+                            answerField_3.text = questionToSet.fakeAnswer_1;
+                        }
+                        else
+                        {
+                            //answerField_2.text = string.Empty;
+                            // answerField_3.text = string.Empty;
+                            answerField_2.enabled = false;
+                            answerField_3.enabled = false;
+                        }        
                     }
                     break;
                 case 2:
@@ -331,13 +378,47 @@ public class GameManager : MonoBehaviour
                     int firstWrongPos_1 = Random.Range(1, 3); //low is first, higher is end (pos 1 and 3 in this case)
                     if (firstWrongPos_1 == 1)
                     {
-                        answerField_1.text = questionToSet.fakeAnswer_1;
-                        answerField_3.text = questionToSet.fakeAnswer_2;
+                        if (amountOfFalse == 1)
+                        {
+                            answerField_1.text = questionToSet.fakeAnswer_1;
+                            //answerField_3.text = string.Empty;
+                            answerField_3.enabled = false;
+
+                        }
+                        else if (amountOfFalse == 2)
+                        {
+                            answerField_1.text = questionToSet.fakeAnswer_1;
+                            answerField_3.text = questionToSet.fakeAnswer_2;
+                        }
+                        else
+                        {
+                            //answerField_1.text = string.Empty;
+                            //answerField_3.text = string.Empty;
+                            answerField_1.enabled = false;
+                            answerField_3.enabled = false;
+                        }
                     }
                     else
                     {
-                        answerField_1.text = questionToSet.fakeAnswer_2;
-                        answerField_3.text = questionToSet.fakeAnswer_1;
+                        if (amountOfFalse == 1)
+                        {
+                            answerField_1.text = questionToSet.fakeAnswer_2;
+                            //answerField_3.text = string.Empty;
+                            answerField_3.enabled = false;
+
+                        }
+                        else if (amountOfFalse == 2)
+                        {
+                            answerField_1.text = questionToSet.fakeAnswer_2;
+                            answerField_3.text = questionToSet.fakeAnswer_1;
+                        }
+                        else
+                        {
+                            //answerField_1.text = string.Empty;
+                            //answerField_3.text = string.Empty;
+                            answerField_1.enabled = false;
+                            answerField_3.enabled = false;
+                        }
                     }
                     break;
                 case 3:
@@ -346,13 +427,47 @@ public class GameManager : MonoBehaviour
                     int firstWrongPos_2 = Random.Range(1, 3); //low is first, higher is end (pos 2 and 3 in this case)
                     if (firstWrongPos_2 == 1)
                     {
-                        answerField_1.text = questionToSet.fakeAnswer_1;
-                        answerField_2.text = questionToSet.fakeAnswer_2;
+                        if (amountOfFalse == 1)
+                        {
+                            answerField_1.text = questionToSet.fakeAnswer_1;
+                            //answerField_2.text = string.Empty;
+                            answerField_2.enabled = false;
+
+                        }
+                        else if (amountOfFalse == 2)
+                        {
+                            answerField_1.text = questionToSet.fakeAnswer_1;
+                            answerField_2.text = questionToSet.fakeAnswer_2;
+                        }
+                        else
+                        {
+                            //answerField_1.text = string.Empty;
+                            //answerField_2.text = string.Empty;
+                            answerField_1.enabled = false;
+                            answerField_2.enabled = false;
+                        }        
                     }
                     else
                     {
-                        answerField_1.text = questionToSet.fakeAnswer_2;
-                        answerField_2.text = questionToSet.fakeAnswer_1;
+                        if (amountOfFalse == 1)
+                        {
+                            answerField_1.text = questionToSet.fakeAnswer_2;
+                            //answerField_2.text = string.Empty;
+                            answerField_2.enabled = false;
+
+                        }
+                        else if (amountOfFalse == 2)
+                        {
+                            answerField_1.text = questionToSet.fakeAnswer_2;
+                            answerField_2.text = questionToSet.fakeAnswer_1;
+                        }
+                        else
+                        {
+                            //answerField_1.text = string.Empty;
+                            //answerField_2.text = string.Empty;
+                            answerField_1.enabled = false;
+                            answerField_2.enabled = false;
+                        }                       
                     }
                     break;
             }
@@ -371,6 +486,14 @@ public class GameManager : MonoBehaviour
                 if(answerField_1.text == currentQuestion.correctAnswer)
                 {
                     currentQuestion.answered = true;
+                    if(playerTurn == 1)
+                    {
+                        amountOfFalseAnswersMain = 2;
+                    }
+                    else
+                    {
+                        amountOfFalseAnswersOpponent = 2;
+                    }
                     Debug.Log("Correct");
                 }
                 else
@@ -383,6 +506,14 @@ public class GameManager : MonoBehaviour
                 if (answerField_2.text == currentQuestion.correctAnswer)
                 {
                     currentQuestion.answered = true;
+                    if (playerTurn == 1)
+                    {
+                        amountOfFalseAnswersMain = 2;
+                    }
+                    else
+                    {
+                        amountOfFalseAnswersOpponent = 2;
+                    }
                     Debug.Log("Correct");
                 }
                 else
@@ -395,6 +526,14 @@ public class GameManager : MonoBehaviour
                 if (answerField_3.text == currentQuestion.correctAnswer)
                 {
                     currentQuestion.answered = true;
+                    if (playerTurn == 1)
+                    {
+                        amountOfFalseAnswersMain = 2;
+                    }
+                    else
+                    {
+                        amountOfFalseAnswersOpponent = 2;
+                    }
                     Debug.Log("Correct");
                 }
                 else
@@ -441,6 +580,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void reduceFalseAnswers(int amount)
+    {
+        if(playerTurn == 1)
+        {
+            amountOfFalseAnswersOpponent -= amount;
+        }
+        else
+        {
+            amountOfFalseAnswersMain -= amount;
+        }
+    }
+
     public void damageMinion()
     {
 
@@ -467,6 +618,14 @@ public class GameManager : MonoBehaviour
         currentTurn = mana;
         maxManaThisTurn = mana;
         manaText.text = "Mana: " + currentMana + "/" + maxManaThisTurn;
+        if(playerTurn == 1)
+        {
+            cardsText.text = "Cards left: " + playableCards.Count;
+        }
+        else
+        {
+            cardsText.text = "Cards left: " + opponentDeck.Count;
+        }
     }
 
     public void endTurn()

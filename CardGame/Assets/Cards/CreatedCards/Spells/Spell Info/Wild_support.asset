@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7418fe6a2e1ac364fb37a49d3533cdc0, type: 3}
-  m_Name: Healing_Touch
+  m_Name: Wild_support
   m_EditorClassIdentifier: 
-  name: Healing Touch
-  description: Restore 5 health
+  name: Wild support
+  description: Summon a 1/1 creature
   artwork: {fileID: 21300000, guid: 8f6574ff3c617b3428baf53328b03baf, type: 3}
-  manaCost: 3
-  effect: 3
-  Value: 5
+  manaCost: 1
+  effect: 0
+  Value: 1
